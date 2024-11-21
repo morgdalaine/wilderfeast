@@ -1,0 +1,420 @@
+@use "_reset.scss";
+@use "_tailwind.scss";
+
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Denk+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
+
+// Roll20 Reset
+.charsheet {
+  * {
+    box-sizing: border-box;
+    height: unset;
+    width: unset;
+    padding: unset;
+    margin: unset;
+    text-align: unset;
+  }
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  font-family: var(--font-text-header);
+}
+
+.wf {
+  --font-text-title: 'Josefin Sans', sans-serif;
+  --font-text-header: 'Josefin Sans', 'Denk One', 'Cinzel', sans-serif;
+  --font-text: Lora, Cormorant, Alegreya, serif;
+
+  --color-black: #030608;
+  --color-white: #fff;
+  --color-navy: #2f4d9a;
+  --color-orange: #ef8017;
+  --color-red: #f04f50;
+  --color-green: #208474;
+
+  --color-black-rgb: 3, 6, 8;
+  --color-white-rgb: 255, 255, 255;
+  --color-navy-rgb: 47, 77, 154;
+  --color-orange-rgb: 239, 128, 23;
+  --color-red-rgb: 240, 79, 80;
+  --color-green-rgb: 32, 132, 116;
+
+  background-color: var(--color-white);
+  border: 6px solid var(--color-orange);
+  padding: 0.5em;
+  font-family: var(--font-text);
+
+  label {
+    font-family: var(--font-text-header);
+    margin-bottom: 0;
+    padding-right: 0;
+  }
+
+  textarea,
+  input {
+    background-color: var(--color-white);
+    border-radius: 0;
+    font-family: var(--font-text);
+
+    &[type='text'] {
+      padding-left: 0.5em;
+      border: 1px solid rgba(var(--color-rgb), 0.5);
+    }
+
+    &[type='number'] {
+      appearance: textfield;
+      text-align: center;
+      font-family: var(--font-text-title);
+      border: 1px solid rgba(var(--color-rgb), 0.5);
+
+      &::-webkit-outer-spin-button,
+      &::-webkit-inner-spin-button {
+        appearance: none;
+        margin: 0;
+      }
+    }
+  }
+
+  textarea {
+    width: auto;
+    min-height: 4rem;
+    max-height: 10rem;
+    resize: vertical;
+    margin: 0;
+    padding: 0 0.25em;
+
+    scrollbar-width: thin;
+
+    @supports selector(::-webkit-scrollbar) {
+      &::-webkit-scrollbar {
+        width: 0.5rem;
+        background: transparent;
+      }
+
+      &::-webkit-scrollbar-track {
+        background: var(--input-color-active);
+      }
+    }
+  }
+
+  $colors: 'black', 'white', 'navy', 'orange', 'red', 'green';
+
+  @each $color in $colors {
+    &-#{$color} {
+      --text-normal: var(--color-#{$color});
+      --border-color: var(--color-#{$color});
+      --container-color: var(--color-#{$color});
+      --color-rgb: var(--color-#{$color}-rgb, var(--color-orange-rgb));
+    }
+  }
+
+  // &-orange {
+  //   --text-normal: #{$orange};
+  //   --border-color: #{$orange};
+  //   --container-color: #{$orange};
+  // }
+  // &-navy {
+  //   --text-normal: var(--color-navy);
+  //   --border-color: var(--color-navy);
+  //   --container-color: var(--color-navy);
+  // }
+  // &-green {
+  //   --text-normal: var(--color-green);
+  //   --border-color: var(--color-green);
+  //   --container-color: var(--color-green);
+  // }
+  // &-black {
+  //   --text-normal: var(--color-black);
+  //   --border-color: var(--color-black);
+  //   --container-color: var(--color-black);
+  // }
+
+  &__title {
+    color: var(--color-navy);
+    text-align: center;
+    margin-top: -0.75em;
+
+    span {
+      font-family: var(--font-text-title);
+      text-transform: uppercase;
+      background-color: var(--color-white);
+      padding: 0 0.5em;
+    }
+  }
+
+  &__header {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    margin-bottom: 1em;
+  }
+
+  &-input {
+    padding: 0.25em;
+
+    label {
+      color: var(--text-normal);
+      text-transform: uppercase;
+
+      span {
+        vertical-align: bottom;
+        font-size: 0.8em;
+      }
+    }
+
+    input[type="text"] {
+      width: 100%;
+    }
+
+    input[type="checkbox"] {
+      margin-right: 0.25em;
+    }
+
+    &:has(> textarea) {
+      display: grid;
+    }
+
+    &.flex {
+      label {
+        margin: 0 auto;
+      }
+    }
+
+    &.grid {
+      grid-template-columns: 1fr 3fr;
+
+      label {
+        margin: auto;
+      }
+    }
+
+    &.text-center {
+      align-items: center;
+    }
+  }
+
+  &-heading {
+    text-align: center;
+    text-transform: uppercase;
+    color: var(--text-normal, var(--color-black));
+    font-family: var(--font-text-header);
+
+    grid-column: 1/-1;
+  }
+
+  &__body {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 0.5em;
+  }
+
+  &-container {
+    padding: 0 0.5em 0.5em;
+    border: 4px solid var(--border-color, var(--color-black));
+  }
+
+  &__styles {
+    display: grid;
+    gap: 0.25em;
+  }
+
+  &__style {
+    display: grid;
+    grid-template-columns: 1fr 3.5em auto;
+    gap: 0.25em;
+
+    +.wf__style {
+      margin-top: 0.25em;
+      // border-top: 1px solid var(--color-orange);
+    }
+  }
+
+  &-action,
+  &-action--wild {
+    &:hover {
+      outline: 2px solid var(--container-color, var(--color-black)) !important;
+    }
+  }
+
+  &-action {
+    --container-color: var(--color-green);
+    text-align: start;
+    font-weight: 700;
+    color: var(--container-color);
+    text-transform: uppercase;
+    padding-left: 0.25em;
+    font-family: var(--font-text-header);
+
+    &--wild {
+      --container-color: var(--color-navy);
+      text-align: center;
+      font-size: 0.8em;
+      color: var(--container-color);
+      font-family: var(--font-text);
+      border: 1px solid var(--container-color);
+      padding: 0 1em;
+      text-transform: lowercase;
+      font-variant: small-caps;
+    }
+  }
+
+  &__skills {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.25em;
+
+    h3 {
+      grid-column: 1/-1;
+    }
+  }
+
+  &-skill {
+    display: contents;
+
+    label {
+      display: flex;
+      gap: 0.25em;
+      align-items: center;
+
+      margin: 0;
+      padding: 0 0.25em;
+
+      width: auto;
+
+      border: 2px solid var(--border-color);
+
+      span {
+        color: var(--text-normal);
+        text-transform: uppercase;
+        font-weight: 900;
+      }
+
+      input[type='number'] {
+        margin-left: auto;
+        border: none;
+        border-left: 1px solid var(--border-color);
+      }
+    }
+  }
+
+  &-tool {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 0.5em;
+
+    .wf-tool__durability {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0 0.25em;
+
+      background-color: var(--color-black);
+
+      padding: 0.25em;
+
+      h4 {
+        color: var(--color-white);
+        grid-column: 1/-1;
+      }
+
+      .wf-input {
+        display: grid;
+        background-color: var(--color-white);
+
+        label {
+          font-size: 0.8rem;
+          text-align: center;
+        }
+
+        input[type='number'] {
+          margin: auto;
+        }
+      }
+    }
+  }
+
+  &-technique,
+  &-trait {
+    input[name*='cost'] {
+      font-style: italic;
+    }
+  }
+
+  &-technique {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0 0.25em;
+  }
+
+  &-trait {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0 0.25em;
+
+    &--default {
+      font-family: var(--font-text);
+
+      strong {
+        color: var(--text-normal);
+        font-family: var(--font-text-header);
+        text-transform: uppercase;
+      }
+    }
+  }
+
+  &__stamina {
+    input[type="number"] {
+      font-size: 2em;
+    }
+  }
+
+  &__conditions {
+    gap: 0.25em;
+
+    .wf-input {
+      display: flex;
+      padding: 0;
+
+      label {
+        margin: auto 0;
+
+      }
+
+      span {
+        opacity: 0.5;
+        color: var(--color-black);
+      }
+
+      input[type="number"] {
+        opacity: 0;
+        width: 3.5em;
+        margin-left: auto;
+        color: var(--text-normal);
+      }
+
+      &:has(:checked) {
+        input[type="number"] {
+          opacity: 1;
+        }
+
+        span {
+          color: var(--container-color);
+          font-weight: 900;
+          opacity: 1;
+        }
+      }
+    }
+
+
+
+  }
+
+  .repcontainer {
+    .repitem+.repitem {
+      margin-top: 0.25em;
+      padding-top: 0.25em;
+      border-top: 1px dashed var(--border-color);
+    }
+  }
+}

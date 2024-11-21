@@ -1,0 +1,27 @@
+<div class="col">
+  <h3>Character</h3> Name <input name="attr_char_name" type="text" value="Name"> Pronouns <input name="attr_char_pronouns" type="text" value="Pronouns"> Specialty <input name="attr_char_specialty" type="text" value="Specialty">
+</div> <br>
+<div class="col">
+  <h3>Tool</h3> Tool <input name="attr_char_tool" type="text" value="Tool-Bezeichnung"> Tool Durability <input name="attr_char_tool_dura" type="number" value="20" max="50" min="0">
+</div> <br>
+<div class="col">
+  <h3>Health</h3> Stamina <input name="attr_char_stamina" type="number" value="20" max="20" min="0"> Tmp Max Stamina <input name="attr_char_tmp_max_stamina" type="number" value="0" min="0"> Wounded <input name="attr_char_wounds" type="number" value="0" max="3" min="0">
+</div> <br>
+<h3>Styles</h3>
+<div class="col">
+  <div class="col3">
+    <div class="col"> <button type="roll" value="/r @{char_mighty}d6 + 1d8 - @{char_frightened_level} Mighty Style " name'roll_mightyCheck'> Mighty </button> </div>
+    <div class="col"> <button type="roll" value="/r @{char_mighty}d6 + 1d20 - @{char_frightened_level} Mighty Style Wild " name'roll_mighty_wildCheck'> Mighty Wild </button> </div>
+    <div class="col"> <input name="attr_char_mighty" type="number" value="1" max="5" min="1"> </div>
+  </div>
+</div> <br>
+<div class="col">
+  <div> <button type="roll" value="/r @{char_precise}d6 + 1d8 - @{char_frightened_level} Precise Style " name'roll_preciseCheck'> Precise </button> <button type="roll" value="/r @{char_precise}d6 + 1d20 - @{char_frightened_level} Precise Style Wild" name'roll_precise_wildCheck'> Precise Wild </button> <input name="attr_char_precise" type="number" value="1" max="5" min="1"> </div>
+</div> <br>
+<div class="col">
+  <div> <button type="roll" value="/r @{char_swift}d6 + 1d8 - @{char_frightened_level} Swift Style " name'roll_swiftCheck'> Swift </button> <button type="roll" value="/r @{char_swift}d6 + 1d20 - @{char_frightened_level} Swift Style Wild " name'roll_swift_wildCheck'> Swift Wild </button> <input name="attr_char_swift" type="number" value="1" max="5" min="1"> </div>
+</div> <br>
+<div class="col">
+  <div> <button type="roll" value="/r @{char_tricky}d6 + 1d8 - @{char_frightened_level} Tricky Style " name'roll_trickyCheck'> Tricky </button> <button type="roll" value="/r @{char_tricky}d6 + 1d20 - @{char_frightened_level} Tricky Style Wild " name'roll_tricky_wildCheck'> Tricky Wild </button> <input name="attr_char_tricky" type="number" value="1" max="5" min="1"> </div>
+</div> <br>
+<h3>Status</h3> Burned <input name="attr_wild_roll" type="checkbox" value="1"> <br> Frightened Level <input name="attr_char_frightened_level" type="number" value="0" max="20" min="0">

@@ -1,0 +1,344 @@
+
+<div class="wf">
+  <div class="wf__wrapper">
+    <h1 class="wf__title"><span data-i18n="wilderfeast">Wilderfeast</span></h1>
+    <div class="wf__header wf-navy">
+      <div class="wf-input">
+        <label class="wf-heading" data-i18n="character_name">Name</label>
+        <input name="attr_character_name" type="text" data-i18n-placeholder="name" placeholder="Name"/>
+      </div>
+      <div class="wf-input">
+        <label class="wf-heading" data-i18n="pronouns">Pronouns</label>
+        <input name="attr_pronouns" type="text" data-i18n-placeholder="pronouns" placeholder="Pronouns"/>
+      </div>
+      <div class="wf-input">
+        <label class="wf-heading" data-i18n="specialty">Specialty</label>
+        <input name="attr_specialty" type="text" data-i18n-placeholder="specialty" placeholder="Specialty"/>
+      </div>
+    </div>
+    <div class="wf__body">
+      <div class="wf-container wf-orange col-span-2 wf__styles">
+        <h3 class="wf-heading" data-i18n="styles">Styles</h3>
+        <div class="wf__style">
+          <button class="wf-action" name="act_mighty" type="action"><span data-i18n="mighty">mighty</span></button>
+          <input name="attr_mighty" type="number" min="1" max="5" placeholder="1"/>
+          <button class="wf-action--wild" name="act_mighty_wild" type="action"><span data-i18n="go_wild">Go Wild</span></button>
+        </div>
+        <div class="wf__style">
+          <button class="wf-action" name="act_precise" type="action"><span data-i18n="precise">precise</span></button>
+          <input name="attr_precise" type="number" min="1" max="5" placeholder="1"/>
+          <button class="wf-action--wild" name="act_precise_wild" type="action"><span data-i18n="go_wild">Go Wild</span></button>
+        </div>
+        <div class="wf__style">
+          <button class="wf-action" name="act_swift" type="action"><span data-i18n="swift">swift</span></button>
+          <input name="attr_swift" type="number" min="1" max="5" placeholder="1"/>
+          <button class="wf-action--wild" name="act_swift_wild" type="action"><span data-i18n="go_wild">Go Wild</span></button>
+        </div>
+        <div class="wf__style">
+          <button class="wf-action" name="act_tricky" type="action"><span data-i18n="tricky">tricky</span></button>
+          <input name="attr_tricky" type="number" min="1" max="5" placeholder="1"/>
+          <button class="wf-action--wild" name="act_tricky_wild" type="action"><span data-i18n="go_wild">Go Wild</span></button>
+        </div>
+      </div>
+      <div class="wf-container wf-navy col-span-4 wf__skills">
+        <h3 class="wf-heading" data-i18n="skills">Skills</h3>
+        <div class="wf-skill wf-input">
+          <label for="assurance">
+            <input name="attr_skill" id="assurance" type="radio" value="assurance"/><span data-i18n="assurance">assurance</span>
+            <input name="attr_assurance" type="number" min="0" max="5" placeholder="0"/>
+          </label>
+        </div>
+        <div class="wf-skill wf-input">
+          <label for="display">
+            <input name="attr_skill" id="display" type="radio" value="display"/><span data-i18n="display">display</span>
+            <input name="attr_display" type="number" min="0" max="5" placeholder="0"/>
+          </label>
+        </div>
+        <div class="wf-skill wf-input">
+          <label for="shot">
+            <input name="attr_skill" id="shot" type="radio" value="shot"/><span data-i18n="shot">shot</span>
+            <input name="attr_shot" type="number" min="0" max="5" placeholder="0"/>
+          </label>
+        </div>
+        <div class="wf-skill wf-input">
+          <label for="call">
+            <input name="attr_skill" id="call" type="radio" value="call"/><span data-i18n="call">call</span>
+            <input name="attr_call" type="number" min="0" max="5" placeholder="0"/>
+          </label>
+        </div>
+        <div class="wf-skill wf-input">
+          <label for="grab">
+            <input name="attr_skill" id="grab" type="radio" value="grab"/><span data-i18n="grab">grab</span>
+            <input name="attr_grab" type="number" min="0" max="5" placeholder="0"/>
+          </label>
+        </div>
+        <div class="wf-skill wf-input">
+          <label for="strike">
+            <input name="attr_skill" id="strike" type="radio" value="strike"/><span data-i18n="strike">strike</span>
+            <input name="attr_strike" type="number" min="0" max="5" placeholder="0"/>
+          </label>
+        </div>
+        <div class="wf-skill wf-input">
+          <label for="craft">
+            <input name="attr_skill" id="craft" type="radio" value="craft"/><span data-i18n="craft">craft</span>
+            <input name="attr_craft" type="number" min="0" max="5" placeholder="0"/>
+          </label>
+        </div>
+        <div class="wf-skill wf-input">
+          <label for="hoard">
+            <input name="attr_skill" id="hoard" type="radio" value="hoard"/><span data-i18n="hoard">hoard</span>
+            <input name="attr_hoard" type="number" min="0" max="5" placeholder="0"/>
+          </label>
+        </div>
+        <div class="wf-skill wf-input">
+          <label for="study">
+            <input name="attr_skill" id="study" type="radio" value="study"/><span data-i18n="study">study</span>
+            <input name="attr_study" type="number" min="0" max="5" placeholder="0"/>
+          </label>
+        </div>
+        <div class="wf-skill wf-input">
+          <label for="cure">
+            <input name="attr_skill" id="cure" type="radio" value="cure"/><span data-i18n="cure">cure</span>
+            <input name="attr_cure" type="number" min="0" max="5" placeholder="0"/>
+          </label>
+        </div>
+        <div class="wf-skill wf-input">
+          <label for="search">
+            <input name="attr_skill" id="search" type="radio" value="search"/><span data-i18n="search">search</span>
+            <input name="attr_search" type="number" min="0" max="5" placeholder="0"/>
+          </label>
+        </div>
+        <div class="wf-skill wf-input">
+          <label for="traversal">
+            <input name="attr_skill" id="traversal" type="radio" value="traversal"/><span data-i18n="traversal">traversal</span>
+            <input name="attr_traversal" type="number" min="0" max="5" placeholder="0"/>
+          </label>
+        </div>
+      </div>
+      <div class="wf-container wf-black col-span-2 grid grid-cols-2 wf__stamina">
+        <h3 class="wf-heading" data-i18n="stamina">Stamina</h3>
+        <div class="wf-input flex flex-col text-center">
+          <label data-i18n="current">Current</label>
+          <input name="attr_tool_durability" min="0" type="number"/>
+        </div>
+        <div class="wf-input flex flex-col text-center">
+          <label data-i18n="max">Max</label>
+          <input name="attr_tool_durability_max" min="0" type="number"/>
+        </div>
+      </div>
+      <div class="wf-container wf-red col-span-4 wf__conditions grid grid-cols-3">
+        <h3 class="wf-heading" data-i18n="conditions">Conditions</h3>
+        <div class="wf-input">
+          <label>
+            <input name="attr_burned" type="checkbox"/><span data-i18n="burned">Burned</span>
+          </label>
+        </div>
+        <div class="wf-input">
+          <label>
+            <input name="attr_caught" type="checkbox"/><span data-i18n="caught">Caught</span>
+          </label>
+        </div>
+        <div class="wf-input">
+          <label>
+            <input name="attr_confused" type="checkbox"/><span data-i18n="confused">Confused</span>&nbsp;<span>X</span>
+          </label>
+          <input name="attr_confused_level" type="number" min="1" placeholder="1"/>
+        </div>
+        <div class="wf-input">
+          <label>
+            <input name="attr_discordant" type="checkbox"/><span data-i18n="discordant">Discordant</span>
+          </label>
+        </div>
+        <div class="wf-input">
+          <label>
+            <input name="attr_expanded" type="checkbox"/><span data-i18n="expanded">Expanded</span>
+          </label>
+        </div>
+        <div class="wf-input">
+          <label>
+            <input name="attr_exposed" type="checkbox"/><span data-i18n="exposed">Exposed</span>
+          </label>
+        </div>
+        <div class="wf-input">
+          <label>
+            <input name="attr_fatigued" type="checkbox"/><span data-i18n="fatigued">Fatigued</span>&nbsp;<span>X</span>
+          </label>
+          <input name="attr_fatigued_level" type="number" min="1" placeholder="1"/>
+        </div>
+        <div class="wf-input">
+          <label>
+            <input name="attr_frightened" type="checkbox"/><span data-i18n="frightened">Frightened</span>&nbsp;<span>X</span>
+          </label>
+          <input name="attr_frightened_level" type="number" min="1" placeholder="1"/>
+        </div>
+        <div class="wf-input">
+          <label>
+            <input name="attr_invigorated" type="checkbox"/><span data-i18n="invigorated">Invigorated</span>&nbsp;<span>X</span>
+          </label>
+          <input name="attr_invigorated_level" type="number" min="1" placeholder="1"/>
+        </div>
+        <div class="wf-input">
+          <label>
+            <input name="attr_hidden" type="checkbox"/><span data-i18n="hidden">Hidden</span>
+          </label>
+        </div>
+        <div class="wf-input">
+          <label>
+            <input name="attr_poisoned" type="checkbox"/><span data-i18n="poisoned">Poisoned</span>&nbsp;<span>X</span>
+          </label>
+          <input name="attr_poisoned_level" type="number" min="1" placeholder="1"/>
+        </div>
+        <div class="wf-input">
+          <label>
+            <input name="attr_rehabilitating" type="checkbox"/><span data-i18n="rehabilitating">Rehabilitating</span>&nbsp;<span>X</span>
+          </label>
+          <input name="attr_rehabilitating_level" type="number" min="1" max="6" placeholder="1"/>
+        </div>
+        <div class="wf-input">
+          <label>
+            <input name="attr_rested" type="checkbox"/><span data-i18n="rested">Rested</span>&nbsp;<span>X</span>
+          </label>
+          <input name="attr_rested_level" type="number" min="1" placeholder="1"/>
+        </div>
+        <div class="wf-input">
+          <label>
+            <input name="attr_stunned" type="checkbox"/><span data-i18n="stunned">Stunned</span>&nbsp;<span>X</span>
+          </label>
+          <input name="attr_stunned_level" type="number" min="1" placeholder="1"/>
+        </div>
+        <div class="wf-input">
+          <label>
+            <input name="attr_wounded" type="checkbox"/><span data-i18n="wounded">Wounded</span>&nbsp;<span>X</span>
+          </label>
+          <input name="attr_wounded_level" type="number" min="1" max="3" placeholder="1"/>
+        </div>
+      </div>
+      <div class="wf-container wf-black col-span-3 wf__tool_techniques">
+        <h3 class="wf-heading" data-i18n="tools_and_techniques">Tools & Techniques</h3>
+        <div class="wf-tool">
+          <div class="wf-invisible">
+            <div class="wf-input grid">
+              <label data-i18n="tool">Tool</label>
+              <input name="attr_tool" type="text"/>
+            </div>
+            <div class="wf-input grid">
+              <label data-i18n="range">Range</label>
+              <input name="attr_range" type="text"/>
+            </div>
+          </div>
+          <div class="wf-tool__durability">
+            <h4 class="wf-heading" data-i18n="durability">Durability</h4>
+            <div class="wf-input wf-black">
+              <label data-i18n="current">Current</label>
+              <input name="attr_tool_durability" min="0" type="number"/>
+            </div>
+            <div class="wf-input wf-black">
+              <label data-i18n="max">Max</label>
+              <input name="attr_tool_durability_max" min="0" type="number"/>
+            </div>
+          </div>
+          <div class="wf-input wf-black col-span-2">
+            <label data-i18n="details">Details</label>
+            <textarea name="attr_tool_details"></textarea>
+          </div>
+        </div>
+        <h4 class="wf-heading" data-i18n="techniques">Techniques</h4>
+        <fieldset class="repeating_techniques">
+          <div class="wf-technique">
+            <div class="wf-input">
+              <label class="wf-heading" data-i18n="technique_name">Name</label>
+              <input name="attr_tech_name" type="text" data-i18n-placeholder="tech_name_placeholder" placeholder="Technique"/>
+            </div>
+            <div class="wf-input">
+              <label class="wf-heading" data-i18n="technique_cost">Cost</label>
+              <input name="attr_tech_cost" type="text" data-i18n-placeholder="tech_cost_placeholder" placeholder="Passive"/>
+            </div>
+            <div class="wf-input col-span-2">
+              <label class="wf-heading" data-i18n="technique_details">details</label>
+              <textarea name="attr_tech_details" data-i18n-placeholder="tech_details_placeholder" placeholder="Details..."></textarea>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+      <div class="wf-container wf-green col-span-3 wf__traits">
+        <h3 class="wf-heading" data-i18n="traits">Traits</h3>
+        <div class="wf-trait--default"><span><strong data-i18n="grit">Grit</strong>&nbsp;<em data-i18n="grit_cost">(Cost: 1 Success)</em>&nbsp;<span data-i18n="grit_details">Increase [A] by 1.</span></span></div>
+        <div class="wf-trait--default"><span><strong data-i18n="insight">Insight</strong>&nbsp;<em data-i18n="insight_cost">(Cost: 1 Success)</em>&nbsp;<span data-i18n="insight_details">Establish a detail about the situation.</span></span></div>
+        <fieldset class="repeating_traits">
+          <div class="wf-trait">
+            <div class="wf-input">
+              <label class="wf-heading" data-i18n="trait_name">Name</label>
+              <input name="attr_trait_name" type="text" data-i18n-placeholder="trait_name_placeholder" placeholder="Trait"/>
+            </div>
+            <div class="wf-input">
+              <label class="wf-heading" data-i18n="trait_cost">Cost</label>
+              <input name="attr_trait_cost" type="text" data-i18n-placeholder="trait_cost_placeholder" placeholder="Passive"/>
+            </div>
+            <div class="wf-input col-span-2">
+              <label class="wf-heading" data-i18n="trait_details">Details</label>
+              <textarea name="attr_trait_details" data-i18n-placeholder="trait_details_placeholder" placeholder="Details..."></textarea>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/worker">
+  const STYLES = ["mighty", "precise", "swift", "tricky"];
+const SKILLS = [
+	"assurance",
+	"display",
+	"shot",
+	"call",
+	"grab",
+	"strike",
+	"craft",
+	"hoard",
+	"study",
+	"cure",
+	"search",
+	"traversal",
+];
+
+const CONDITIONS = [
+	{ label: "Burned", name: "burned" },
+	{ label: "Caught", name: "caught" },
+	{ label: "Confused", name: "confused", min: 1 },
+	{ label: "Discordant", name: "discordant" },
+	{ label: "Expanded", name: "expanded" },
+	{ label: "Exposed", name: "exposed" },
+	{ label: "Fatigued", name: "fatigued", min: 1 },
+	{ label: "Frightened", name: "frightened", min: 1 },
+	{ label: "Invigorated", name: "invigorated", min: 1 },
+	{ label: "Hidden", name: "hidden" },
+	{ label: "Poisoned", name: "poisoned", min: 1 },
+	{ label: "Rehabilitating", name: "rehabilitating", min: 1, max: 6 },
+	{ label: "Rested", name: "rested", min: 1 },
+	{ label: "Stunned", name: "stunned", min: 1 },
+	{ label: "Wounded", name: "wounded", min: 1, max: 3 },
+];
+  for (const condition in CONDITIONS) {
+  on(`change:${condition.name} change:${condition.name}_level`, (eventInfo) => {
+
+  });
+}
+  for (const style of STYLES) {
+  on(`clicked:${style}`, async (eventInfo) => {
+    rollAction(style);
+  });
+  on(`clicked:${style}_wild`, async (eventInfo) => {
+    rollAction(style, true);
+  });
+}
+
+const rollAction = async (btn, wild = false) => {
+  getAttrs([...STYLES, ...SKILLS, 'skill'], (attributes) => {
+    const style = +attributes[btn] || 0;
+    const skill = +attributes.skill || 0;
+
+    console.debug(btn, wild, style, skill);
+  });
+};
+
+</script>

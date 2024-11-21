@@ -1,0 +1,150 @@
+.wf
+  .wf__wrapper
+    h1.wf__title
+      span(data-i18n="wilderfeast") Wilderfeast
+    .wf__header.wf-navy
+      .wf-input
+        label.wf-heading(data-i18n="character_name") Name
+        input(name="attr_character_name" type="text" data-i18n-placeholder="name" placeholder="Name")
+      .wf-input
+        label.wf-heading(data-i18n="pronouns") Pronouns
+        input(name="attr_pronouns" type="text" data-i18n-placeholder="pronouns" placeholder="Pronouns")
+      .wf-input
+        label.wf-heading(data-i18n="specialty") Specialty
+        input(name="attr_specialty" type="text" data-i18n-placeholder="specialty" placeholder="Specialty")
+
+    .wf__body
+      .wf-container.wf-orange.col-span-2.wf__styles
+        h3.wf-heading(data-i18n="styles") Styles
+        - const styles = ["mighty", "precise", "swift", "tricky"];
+        each style in styles
+          .wf__style
+            button.wf-action(name=`act_${style}` type="action")
+              span(data-i18n=style)=style
+            input(name=`attr_${style}` type="number" min="1" max="5" placeholder="1")
+            button.wf-action--wild(name=`act_${style}_wild` type="action")
+              span(data-i18n="go_wild") Go Wild
+
+      .wf-container.wf-navy.col-span-4.wf__skills
+        h3.wf-heading(data-i18n="skills") Skills
+        -
+          const skills = ["assurance", "display", "shot",
+                          "call", "grab", "strike",
+                          "craft", "hoard", "study",
+                          "cure", "search", "traversal"];
+        each skill in skills
+          .wf-skill.wf-input
+            label(for=skill)
+              input(name="attr_skill" id=skill type="radio" value=skill)
+              span(data-i18n=skill)=skill
+              input(name=`attr_${skill}` type="number" min="0" max="5" placeholder="0")
+
+
+      .wf-container.wf-black.col-span-2.grid.grid-cols-2.wf__stamina
+        h3.wf-heading(data-i18n="stamina") Stamina
+        .wf-input.flex.flex-col.text-center
+          label(data-i18n="current") Current
+          input(name="attr_tool_durability" min="0" type="number")
+        .wf-input.flex.flex-col.text-center
+          label(data-i18n="max") Max
+          input(name="attr_tool_durability_max" min="0" type="number")
+
+      .wf-container.wf-red.col-span-4.wf__conditions.grid.grid-cols-3
+        h3.wf-heading(data-i18n="conditions") Conditions
+        -
+          const conditions = [
+            { label: "Burned", name: "burned" },
+            { label: "Caught", name: "caught" },
+            { label: "Confused", name: "confused", min: 1 },
+            { label: "Discordant", name: "discordant" },
+            { label: "Expanded", name: "expanded" },
+            { label: "Exposed", name: "exposed" },
+            { label: "Fatigued", name: "fatigued", min: 1 },
+            { label: "Frightened", name: "frightened", min: 1 },
+            { label: "Invigorated", name: "invigorated", min: 1 },
+            { label: "Hidden", name: "hidden" },
+            { label: "Poisoned", name: "poisoned", min: 1 },
+            { label: "Rehabilitating", name: "rehabilitating", min: 1, max: 6 },
+            { label: "Rested", name: "rested", min: 1 },
+            { label: "Stunned", name: "stunned", min: 1 },
+            { label: "Wounded", name: "wounded", min: 1, max: 3 },
+          ];
+        each condition in conditions
+          .wf-input
+            label
+              input(name=`attr_${condition.name}` type="checkbox")
+              span(data-i18n=condition.name)=condition.label
+              if condition.min >= 0
+                | &nbsp;
+                span X
+
+            if condition.min >= 0
+              input(name=`attr_${condition.name}_level` type="number" min=condition.min max=condition.max placeholder=condition.min)
+
+      .wf-container.wf-black.col-span-3.wf__tool_techniques
+        h3.wf-heading(data-i18n="tools_and_techniques") Tools & Techniques
+        .wf-tool
+          .wf-invisible
+            .wf-input.grid
+              label(data-i18n="tool") Tool
+              input(name="attr_tool" type="text")
+            .wf-input.grid
+              label(data-i18n="range") Range
+              input(name="attr_range" type="text")
+          .wf-tool__durability
+            h4.wf-heading(data-i18n="durability") Durability
+            .wf-input.wf-black
+              label(data-i18n="current") Current
+              input(name="attr_tool_durability" min="0" type="number")
+            .wf-input.wf-black
+              label(data-i18n="max") Max
+              input(name="attr_tool_durability_max" min="0" type="number")
+          .wf-input.wf-black.col-span-2
+            label(data-i18n="details") Details
+            textarea(name="attr_tool_details")
+
+        h4.wf-heading(data-i18n="techniques") Techniques
+        fieldset.repeating_techniques
+          .wf-technique
+            .wf-input
+              label.wf-heading(data-i18n="technique_name") Name
+              input(name="attr_tech_name" type="text" data-i18n-placeholder="tech_name_placeholder" placeholder="Technique")
+            .wf-input
+              label.wf-heading(data-i18n="technique_cost") Cost
+              input(name="attr_tech_cost" type="text" data-i18n-placeholder="tech_cost_placeholder" placeholder="Passive")
+            .wf-input.col-span-2
+              label.wf-heading(data-i18n="technique_details") details
+              textarea(name="attr_tech_details" data-i18n-placeholder="tech_details_placeholder" placeholder="Details...")
+
+      .wf-container.wf-green.col-span-3.wf__traits
+        h3.wf-heading(data-i18n="traits") Traits
+        .wf-trait--default
+          span
+            strong(data-i18n="grit") Grit
+            | &nbsp;
+            em(data-i18n="grit_cost") (Cost: 1 Success)
+            | &nbsp;
+            span(data-i18n="grit_details") Increase [A] by 1.
+        .wf-trait--default
+          span
+            strong(data-i18n="insight") Insight
+            | &nbsp;
+            em(data-i18n="insight_cost") (Cost: 1 Success)
+            | &nbsp;
+            span(data-i18n="insight_details") Establish a detail about the situation.
+        fieldset.repeating_traits
+          .wf-trait
+            .wf-input
+              label.wf-heading(data-i18n="trait_name") Name
+              input(name="attr_trait_name" type="text" data-i18n-placeholder="trait_name_placeholder" placeholder="Trait")
+            .wf-input
+              label.wf-heading(data-i18n="trait_cost") Cost
+              input(name="attr_trait_cost" type="text" data-i18n-placeholder="trait_cost_placeholder" placeholder="Passive")
+            .wf-input.col-span-2
+              label.wf-heading(data-i18n="trait_details") Details
+              textarea(name="attr_trait_details" data-i18n-placeholder="trait_details_placeholder" placeholder="Details...")
+
+script(type='text/worker')
+  include ../js/constants.js
+  include ../js/eventhandlers.js
+  include ../js/dice.js
