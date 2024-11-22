@@ -34,8 +34,7 @@ const createRollString = (template, properties) => {
 };
 
 const rollAction = async (btn, wild = false) => {
-  const conditions = CONDITIONS.flatMap((c) => [c.name, `${c.name}_level`]);
-  getAttrs([...STYLES, ...SKILLS, ...conditions, "skill", "advantage"], (attributes) => {
+  getAttrs([...STYLES, ...SKILLS, ...CONDITIONS_REQUEST, "skill", "advantage"], (attributes) => {
     const skillName = attributes.skill;
     const style = Number(attributes[btn]) ?? 0;
     const skill = Number(attributes[skillName]) ?? 0;

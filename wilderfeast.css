@@ -2,6 +2,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Mohave:ital,wght@0,300..700;1,300..700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@100..800&display=swap");
 html {
   box-sizing: border-box;
   font-size: 12px;
@@ -367,6 +369,7 @@ button {
   --font-text-header: Mohave, sans-serif;
   --font-text: "Source Serif 4", serif;
   --font-text-monospace: OCRB, "JetBrains Mono", monospace;
+  --font-text-input: "Playpen Sans", "Nanum Pen Script", "Comic Sans MS", sans-serif;
   --color-black: #030608;
   --color-white: #fff;
   --color-navy: #2f4d9a;
@@ -386,6 +389,7 @@ button {
   background-color: var(--color-white);
   border: 6px double var(--color-orange);
   padding: 0.5em;
+  margin-inline: 1em;
   font-family: var(--font-text);
 }
 .wf label {
@@ -397,7 +401,7 @@ button {
 .wf input {
   background-color: var(--color-white);
   border-radius: 0;
-  font-family: var(--font-text);
+  font-family: var(--font-text-input);
 }
 .wf textarea[type=text],
 .wf input[type=text] {
@@ -410,7 +414,7 @@ button {
      -moz-appearance: textfield;
           appearance: textfield;
   text-align: center;
-  font-family: var(--font-text-title);
+  font-family: var(--font-text-input);
   border: 1px solid rgba(var(--color-rgb), 0.5);
 }
 .wf textarea[type=number]::-webkit-outer-spin-button, .wf textarea[type=number]::-webkit-inner-spin-button,
@@ -490,6 +494,15 @@ button {
   grid-template-columns: 1fr auto auto;
   margin-bottom: 1em;
 }
+.wf__footer {
+  float: right;
+  padding-inline: 0.5em;
+  margin-right: 1em;
+  background-color: var(--color-white);
+  color: var(--color-orange);
+  font-family: var(--font-text-monospace);
+  text-transform: uppercase;
+}
 .wf-input {
   padding: 0.25em;
 }
@@ -509,15 +522,13 @@ button {
 }
 .wf-input:has(> textarea) {
   display: grid;
+  grid-template-rows: auto 1fr;
 }
 .wf-input.flex label {
   margin: 0 auto;
 }
 .wf-input.grid {
   grid-template-columns: 1fr 3fr;
-}
-.wf-input.grid label {
-  margin: auto;
 }
 .wf-input.text-center {
   align-items: center;
@@ -549,6 +560,26 @@ button {
 }
 .wf__style + .wf__style {
   margin-top: 0.25em;
+}
+.wf__you-are {
+  grid-template-rows: repeat(2, auto) 1fr auto;
+  border-color: transparent;
+}
+.wf__portrait {
+  padding: 0;
+  max-height: 20em;
+  overflow: hidden;
+  background-color: var(--color-parchment);
+}
+.wf__portrait img,
+.wf__portrait svg {
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: top;
+     object-position: top;
+  height: 100%;
+  width: 100%;
+  border: none;
 }
 .wf-action:hover, .wf-action--wild:hover {
   outline: 2px solid var(--container-color, var(--color-black)) !important;

@@ -1,5 +1,7 @@
 .wf
   input(name="attr_advantage" value="0" type="hidden")
+  input(name="attr_hp_mod" value="0" type="hidden")
+  input(name="attr_version" value="0.1" type="hidden")
 
   .wf__wrapper
     h1.wf__title
@@ -31,6 +33,7 @@
         )
 
     .wf__body
+      //- Styles
       .wf-container.wf-orange.col-span-2.wf__styles
         h3.wf-heading(data-i18n="styles") Styles
         - const styles = ["mighty", "precise", "swift", "tricky"];
@@ -42,6 +45,7 @@
             button.wf-action--wild(name=`act_${style}_wild` type="action")
               span(data-i18n="go_wild") Go Wild
 
+      //- Skills
       .wf-container.wf-navy.col-span-4.wf__skills
         h3.wf-heading(data-i18n="skills") Skills
         -
@@ -56,15 +60,17 @@
               span(data-i18n=skill)= skill
               input(name=`attr_${skill}` type="number" min="0" max="5" placeholder="0")
 
+      //- Stamina
       .wf-container.wf-black.col-span-2.grid.grid-cols-2.wf__stamina
         h3.wf-heading(data-i18n="stamina") Stamina
         .wf-input.flex.flex-col.text-center
           label(data-i18n="current") Current
-          input(name="attr_tool_durability" min="0" type="number")
+          input(name="attr_hp" min="0" placeholder="0" type="number")
         .wf-input.flex.flex-col.text-center
           label(data-i18n="max") Max
-          input(name="attr_tool_durability_max" min="0" type="number")
+          input(name="attr_hp_max" min="0" placeholder="0" type="number")
 
+      //- Conditions
       .wf-container.wf-red.col-span-4.wf__conditions.grid.grid-cols-3
         h3.wf-heading(data-i18n="conditions") Conditions
         -
@@ -103,6 +109,7 @@
                 placeholder=condition.min
               )
 
+      //- Tools & Techniques
       .wf-container.wf-black.col-span-3.wf__tool_techniques
         h3.wf-heading(data-i18n="tools_and_techniques") Tools & Techniques
         .wf-tool
@@ -117,13 +124,17 @@
             h4.wf-heading(data-i18n="durability") Durability
             .wf-input.wf-black
               label(data-i18n="current") Current
-              input(name="attr_tool_durability" min="0" type="number")
+              input(name="attr_tool_durability" placeholder="0" min="0" type="number")
             .wf-input.wf-black
               label(data-i18n="max") Max
               input(name="attr_tool_durability_max" min="0" type="number")
           .wf-input.wf-black.col-span-2
             label(data-i18n="details") Details
-            textarea(name="attr_tool_details")
+            textarea(
+              name="attr_tool_details"
+              data-i18n-placeholder="tool_details_placeholder"
+              placeholder="Details..."
+            )
 
         h4.wf-heading(data-i18n="techniques") Techniques
         fieldset.repeating_techniques
@@ -145,13 +156,14 @@
                 placeholder="Passive"
               )
             .wf-input.col-span-2
-              label.wf-heading(data-i18n="technique_details") details
+              label.wf-heading(data-i18n="technique_details") Details
               textarea(
                 name="attr_tech_details"
                 data-i18n-placeholder="tech_details_placeholder"
                 placeholder="Details..."
               )
 
+      //- Traits
       .wf-container.wf-green.col-span-3.wf__traits
         h3.wf-heading(data-i18n="traits") Traits
         .wf-trait--default
@@ -193,6 +205,74 @@
                 data-i18n-placeholder="trait_details_placeholder"
                 placeholder="Details..."
               )
+
+      //- About You
+      .wf-container.wf-black.col-span-4.wf__you-are.grid.grid-cols-2
+        .wf-input.grid.col-span-2
+          label(data-i18n="you_are") You Are
+          input(name="attr_you_are" type="text")
+        .wf-input.grid.col-span-2
+          label(data-i18n="but_struggle_to_be") But You Struggle to Be
+          input(name="attr_but_struggle_to_be" type="text")
+        .wf-input.col-span-2
+          label.wf-heading(data-i18n="monstrous_acquaintance") Monstrous Acquaintance
+          textarea(
+            name="attr_monstrous_acquaintance"
+            data-i18n-placeholder="monstrous_acquaintance_placeholder"
+            placeholder="Monstrous Acquaintance..."
+          )
+        .wf-input
+          label(data-i18n="staple") Staple
+          input(name="attr_staple" type="text")
+        .wf-input
+          label(data-i18n="spice") Spice
+          input(name="attr_spice" type="text")
+
+      //- Portrait
+      .wf-container.wf-navy.col-span-2.wf__portrait
+        img(
+          name="attr_character_avatar"
+          data-i18n-title="character_avatar"
+          title="Despite everything, it's still you."
+        )
+
+      //- Three Course Background
+      .wf-container.wf-navy.col-span-6.wf__background.grid.grid-cols-2
+        h3.wf-heading(data-i18n="three_course_background") 3 Course Background
+
+        .wf-input
+          label(data-i18n="upbringing") Upbringing
+          textarea(
+            name="upbringing"
+            data-i18n-placeholder="upbringing_placeholder"
+            placeholder="What is the meal that defines your childhood?"
+          )
+        .wf-input
+          label(data-i18n="initiation") Initiation
+          textarea(
+            name="initiation"
+            data-i18n-placeholder="initiation_placeholder"
+            placeholder="What is the meal that made you a wilder?"
+          )
+        .wf-input
+          label(data-i18n="ambition") Ambition
+          textarea(
+            name="ambition"
+            data-i18n-placeholder="ambition_placeholder"
+            placeholder="What is the meal you want to eat most?"
+          )
+        .wf-input
+          label(data-i18n="connection") Connection
+          textarea(
+            name="connection"
+            data-i18n-placeholder="connection_placeholder"
+            placeholder="The two of you share a bond over this dish."
+          )
+
+    .wf__footer
+      span(data-i18n="version") Version
+      | &nbsp;
+      span(name="attr_version")
 
 include rolltemplate
 include translations

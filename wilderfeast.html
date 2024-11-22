@@ -1,6 +1,8 @@
 
 <div class="wf">
   <input name="attr_advantage" value="0" type="hidden"/>
+  <input name="attr_hp_mod" value="0" type="hidden"/>
+  <input name="attr_version" value="0.1" type="hidden"/>
   <div class="wf__wrapper">
     <h1 class="wf__title"><span data-i18n="wilderfeast">Wilderfeast</span></h1>
     <div class="wf__header wf-navy">
@@ -120,11 +122,11 @@
         <h3 class="wf-heading" data-i18n="stamina">Stamina</h3>
         <div class="wf-input flex flex-col text-center">
           <label data-i18n="current">Current</label>
-          <input name="attr_tool_durability" min="0" type="number"/>
+          <input name="attr_hp" min="0" placeholder="0" type="number"/>
         </div>
         <div class="wf-input flex flex-col text-center">
           <label data-i18n="max">Max</label>
-          <input name="attr_tool_durability_max" min="0" type="number"/>
+          <input name="attr_hp_max" min="0" placeholder="0" type="number"/>
         </div>
       </div>
       <div class="wf-container wf-red col-span-4 wf__conditions grid grid-cols-3">
@@ -231,7 +233,7 @@
             <h4 class="wf-heading" data-i18n="durability">Durability</h4>
             <div class="wf-input wf-black">
               <label data-i18n="current">Current</label>
-              <input name="attr_tool_durability" min="0" type="number"/>
+              <input name="attr_tool_durability" placeholder="0" min="0" type="number"/>
             </div>
             <div class="wf-input wf-black">
               <label data-i18n="max">Max</label>
@@ -240,7 +242,7 @@
           </div>
           <div class="wf-input wf-black col-span-2">
             <label data-i18n="details">Details</label>
-            <textarea name="attr_tool_details"></textarea>
+            <textarea name="attr_tool_details" data-i18n-placeholder="tool_details_placeholder" placeholder="Details..."></textarea>
           </div>
         </div>
         <h4 class="wf-heading" data-i18n="techniques">Techniques</h4>
@@ -255,7 +257,7 @@
               <input name="attr_tech_cost" type="text" data-i18n-placeholder="tech_cost_placeholder" placeholder="Passive"/>
             </div>
             <div class="wf-input col-span-2">
-              <label class="wf-heading" data-i18n="technique_details">details</label>
+              <label class="wf-heading" data-i18n="technique_details">Details</label>
               <textarea name="attr_tech_details" data-i18n-placeholder="tech_details_placeholder" placeholder="Details..."></textarea>
             </div>
           </div>
@@ -282,7 +284,50 @@
           </div>
         </fieldset>
       </div>
+      <div class="wf-container wf-black col-span-4 wf__you-are grid grid-cols-2">
+        <div class="wf-input grid col-span-2">
+          <label data-i18n="you_are">You Are</label>
+          <input name="attr_you_are" type="text"/>
+        </div>
+        <div class="wf-input grid col-span-2">
+          <label data-i18n="but_struggle_to_be">But You Struggle to Be</label>
+          <input name="attr_but_struggle_to_be" type="text"/>
+        </div>
+        <div class="wf-input col-span-2">
+          <label class="wf-heading" data-i18n="monstrous_acquaintance">Monstrous Acquaintance</label>
+          <textarea name="attr_monstrous_acquaintance" data-i18n-placeholder="monstrous_acquaintance_placeholder" placeholder="Monstrous Acquaintance..."></textarea>
+        </div>
+        <div class="wf-input">
+          <label data-i18n="staple">Staple</label>
+          <input name="attr_staple" type="text"/>
+        </div>
+        <div class="wf-input">
+          <label data-i18n="spice">Spice</label>
+          <input name="attr_spice" type="text"/>
+        </div>
+      </div>
+      <div class="wf-container wf-navy col-span-2 wf__portrait"><img name="attr_character_avatar" data-i18n-title="character_avatar" title="Despite everything, it's still you."/></div>
+      <div class="wf-container wf-navy col-span-6 wf__background grid grid-cols-2">
+        <h3 class="wf-heading" data-i18n="three_course_background">3 Course Background</h3>
+        <div class="wf-input">
+          <label data-i18n="upbringing">Upbringing</label>
+          <textarea name="upbringing" data-i18n-placeholder="upbringing_placeholder" placeholder="What is the meal that defines your childhood?"></textarea>
+        </div>
+        <div class="wf-input">
+          <label data-i18n="initiation">Initiation</label>
+          <textarea name="initiation" data-i18n-placeholder="initiation_placeholder" placeholder="What is the meal that made you a wilder?"></textarea>
+        </div>
+        <div class="wf-input">
+          <label data-i18n="ambition">Ambition</label>
+          <textarea name="ambition" data-i18n-placeholder="ambition_placeholder" placeholder="What is the meal you want to eat most?"></textarea>
+        </div>
+        <div class="wf-input">
+          <label data-i18n="connection">Connection</label>
+          <textarea name="connection" data-i18n-placeholder="connection_placeholder" placeholder="The two of you share a bond over this dish."></textarea>
+        </div>
+      </div>
     </div>
+    <div class="wf__footer"><span data-i18n="version">Version</span>&nbsp;<span name="attr_version"></span></div>
   </div>
 </div>
 <rolltemplate class="sheet-rolltemplate-action">
@@ -345,8 +390,43 @@ const CONDITIONS = [
   { label: "Stunned", name: "stunned", min: 1 },
   { label: "Wounded", name: "wounded", min: 1, max: 3 },
 ];
-  for (const condition in CONDITIONS) {
-  on(`change:${condition.name} change:${condition.name}_level`, (eventInfo) => {});
+const CONDITIONS_REQUEST = CONDITIONS.flatMap((c) => [c.name, `${c.name}_level`]);
+
+const MAX_FIELDS = ["hp", "tool_durability"];
+  for (const condition of CONDITIONS) {
+  on(`change:${condition.name} change:${condition.name}_level`, (eventInfo) => {
+    getAttrs(CONDITIONS_REQUEST, (attributes) => {
+      const state = attributes[condition.name];
+      const level = Number(attributes[`${condition.name}_level`]);
+
+      if (state !== "on") return;
+
+      switch (condition.name) {
+        case "fatigued":
+          setAttrs({ hp_mod: -1 * level }, { silent: true });
+          break;
+
+        default:
+          break;
+      }
+    });
+  });
+}
+
+for (const field of MAX_FIELDS) {
+  on(`change:${field}`, (eventInfo) => {
+    if (eventInfo.sourceType !== "player") return;
+
+    getAttrs([field, `${field}_max`, `${field}_mod`], (attributes) => {
+      const current = Number(attributes[field]);
+      const max = Number(attributes[`${field}_max`]);
+      const mod = Number(attributes[`${field}_mod`]) || 0;
+
+      if (current > max + mod) {
+        setAttrs({ [field]: max + mod }, { silent: true });
+      }
+    });
+  });
 }
   for (const style of STYLES) {
   on(`clicked:${style}`, async (eventInfo) => {
@@ -384,8 +464,7 @@ const createRollString = (template, properties) => {
 };
 
 const rollAction = async (btn, wild = false) => {
-  const conditions = CONDITIONS.flatMap((c) => [c.name, `${c.name}_level`]);
-  getAttrs([...STYLES, ...SKILLS, ...conditions, "skill", "advantage"], (attributes) => {
+  getAttrs([...STYLES, ...SKILLS, ...CONDITIONS_REQUEST, "skill", "advantage"], (attributes) => {
     const skillName = attributes.skill;
     const style = Number(attributes[btn]) ?? 0;
     const skill = Number(attributes[skillName]) ?? 0;

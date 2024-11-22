@@ -6,6 +6,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Mohave:ital,wght@0,300..700;1,300..700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@100..800&display=swap');
 
 // Roll20 Reset
 .charsheet {
@@ -31,6 +33,7 @@ button {
   --font-text-header: Mohave, sans-serif;
   --font-text: "Source Serif 4", serif;
   --font-text-monospace: OCRB, "JetBrains Mono", monospace;
+  --font-text-input: "Playpen Sans", "Nanum Pen Script", "Comic Sans MS", sans-serif;
 
   --color-black: #030608;
   --color-white: #fff;
@@ -52,6 +55,7 @@ button {
   background-color: var(--color-white);
   border: 6px double var(--color-orange);
   padding: 0.5em;
+  margin-inline: 1em;
   font-family: var(--font-text);
 
   label {
@@ -64,7 +68,7 @@ button {
   input {
     background-color: var(--color-white);
     border-radius: 0;
-    font-family: var(--font-text);
+    font-family: var(--font-text-input);
 
     &[type='text'] {
       padding-left: 0.5em;
@@ -74,7 +78,7 @@ button {
     &[type='number'] {
       appearance: textfield;
       text-align: center;
-      font-family: var(--font-text-title);
+      font-family: var(--font-text-input);
       border: 1px solid rgba(var(--color-rgb), 0.5);
 
       &::-webkit-outer-spin-button,
@@ -137,6 +141,18 @@ button {
     margin-bottom: 1em;
   }
 
+  &__footer {
+    float: right;
+
+    padding-inline: 0.5em;
+    margin-right: 1em;
+    background-color: var(--color-white);
+    color: var(--color-orange);
+
+    font-family: var(--font-text-monospace);
+    text-transform: uppercase;
+  }
+
   &-input {
     padding: 0.25em;
 
@@ -160,6 +176,7 @@ button {
 
     &:has(> textarea) {
       display: grid;
+      grid-template-rows: auto 1fr;
     }
 
     &.flex {
@@ -170,10 +187,6 @@ button {
 
     &.grid {
       grid-template-columns: 1fr 3fr;
-
-      label {
-        margin: auto;
-      }
     }
 
     &.text-center {
@@ -214,6 +227,27 @@ button {
     +.wf__style {
       margin-top: 0.25em;
       // border-top: 1px solid var(--color-orange);
+    }
+  }
+
+  &__you-are {
+    grid-template-rows: repeat(2, auto) 1fr auto;
+    border-color: transparent;
+  }
+
+  &__portrait {
+    padding: 0;
+    max-height: 20em;
+    overflow: hidden;
+    background-color: var(--color-parchment);
+
+    img,
+    svg {
+      object-fit: cover;
+      object-position: top;
+      height: 100%;
+      width: 100%;
+      border: none;
     }
   }
 

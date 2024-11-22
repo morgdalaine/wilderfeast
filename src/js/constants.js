@@ -31,3 +31,6 @@ const CONDITIONS = [
   { label: "Stunned", name: "stunned", min: 1 },
   { label: "Wounded", name: "wounded", min: 1, max: 3 },
 ];
+const CONDITIONS_REQUEST = CONDITIONS.flatMap((c) => [c.name, `${c.name}_level`]);
+
+const MAX_FIELDS = ["hp", "tool_durability"];
