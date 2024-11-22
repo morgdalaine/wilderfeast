@@ -25,19 +25,11 @@ $ npm run build
 
 ## Author
 
-**morgdalaine**
+### morgdalaine
 
-* Website: [itch.io](https://morgdalaine.itch.io)
 * Twitter: [@morgdalaine](https://twitter.com/morgdalaine)
 * Github: [@morgdalaine](https://github.com/morgdalaine)
 
-## Show your support
+<a href='https://ko-fi.com/R5R54NXP1' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://storage.ko-fi.com/cdn/kofi6.png?v=6' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
 
-Give a ★ if this project helped you!
-
-[![support us](https://img.shields.io/badge/become-a_patreon-orange.svg)](https://www.patreon.com/morgdalaine)
-[![ko-fi](https://img.shields.io/badge/buy_me_a-ko_fi-blue.svg)](https://ko-fi.com/morgdalaine)
-
----
-
-_This README was generated with ♥︎ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
+> _This README was generated with ♥︎ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
