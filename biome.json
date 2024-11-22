@@ -18,7 +18,7 @@
     "lineEnding": "lf",
     "lineWidth": 100,
     "attributePosition": "auto",
-    "bracketSpacing": true
+    "bracketSpacing": false
   },
   "organizeImports": {
     "enabled": true

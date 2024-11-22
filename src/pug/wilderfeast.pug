@@ -7,13 +7,28 @@
     .wf__header.wf-navy
       .wf-input
         label.wf-heading(data-i18n="character_name") Name
-        input(name="attr_character_name" type="text" data-i18n-placeholder="name" placeholder="Name")
+        input(
+          name="attr_character_name"
+          type="text"
+          data-i18n-placeholder="name"
+          placeholder="Name"
+        )
       .wf-input
         label.wf-heading(data-i18n="pronouns") Pronouns
-        input(name="attr_pronouns" type="text" data-i18n-placeholder="pronouns" placeholder="Pronouns")
+        input(
+          name="attr_pronouns"
+          type="text"
+          data-i18n-placeholder="pronouns"
+          placeholder="Pronouns"
+        )
       .wf-input
         label.wf-heading(data-i18n="specialty") Specialty
-        input(name="attr_specialty" type="text" data-i18n-placeholder="specialty" placeholder="Specialty")
+        input(
+          name="attr_specialty"
+          type="text"
+          data-i18n-placeholder="specialty"
+          placeholder="Specialty"
+        )
 
     .wf__body
       .wf-container.wf-orange.col-span-2.wf__styles
@@ -22,7 +37,7 @@
         each style in styles
           .wf__style
             button.wf-action(name=`act_${style}` type="action")
-              span(data-i18n=style)=style
+              span(data-i18n=style)= style
             input(name=`attr_${style}` type="number" min="1" max="5" placeholder="1")
             button.wf-action--wild(name=`act_${style}_wild` type="action")
               span(data-i18n="go_wild") Go Wild
@@ -38,9 +53,8 @@
           .wf-skill.wf-input
             label(for=skill)
               input(name="attr_skill" id=skill type="radio" value=skill)
-              span(data-i18n=skill)=skill
+              span(data-i18n=skill)= skill
               input(name=`attr_${skill}` type="number" min="0" max="5" placeholder="0")
-
 
       .wf-container.wf-black.col-span-2.grid.grid-cols-2.wf__stamina
         h3.wf-heading(data-i18n="stamina") Stamina
@@ -75,13 +89,19 @@
           .wf-input
             label
               input(name=`attr_${condition.name}` type="checkbox")
-              span(data-i18n=condition.name)=condition.label
+              span(data-i18n=condition.name)= condition.label
               if condition.min >= 0
                 | &nbsp;
                 span X
 
             if condition.min >= 0
-              input(name=`attr_${condition.name}_level` type="number" min=condition.min max=condition.max placeholder=condition.min)
+              input(
+                name=`attr_${condition.name}_level`
+                type="number"
+                min=condition.min
+                max=condition.max
+                placeholder=condition.min
+              )
 
       .wf-container.wf-black.col-span-3.wf__tool_techniques
         h3.wf-heading(data-i18n="tools_and_techniques") Tools & Techniques
@@ -110,13 +130,27 @@
           .wf-technique
             .wf-input
               label.wf-heading(data-i18n="technique_name") Name
-              input(name="attr_tech_name" type="text" data-i18n-placeholder="tech_name_placeholder" placeholder="Technique")
+              input(
+                name="attr_tech_name"
+                type="text"
+                data-i18n-placeholder="tech_name_placeholder"
+                placeholder="Technique"
+              )
             .wf-input
               label.wf-heading(data-i18n="technique_cost") Cost
-              input(name="attr_tech_cost" type="text" data-i18n-placeholder="tech_cost_placeholder" placeholder="Passive")
+              input(
+                name="attr_tech_cost"
+                type="text"
+                data-i18n-placeholder="tech_cost_placeholder"
+                placeholder="Passive"
+              )
             .wf-input.col-span-2
               label.wf-heading(data-i18n="technique_details") details
-              textarea(name="attr_tech_details" data-i18n-placeholder="tech_details_placeholder" placeholder="Details...")
+              textarea(
+                name="attr_tech_details"
+                data-i18n-placeholder="tech_details_placeholder"
+                placeholder="Details..."
+              )
 
       .wf-container.wf-green.col-span-3.wf__traits
         h3.wf-heading(data-i18n="traits") Traits
@@ -138,13 +172,27 @@
           .wf-trait
             .wf-input
               label.wf-heading(data-i18n="trait_name") Name
-              input(name="attr_trait_name" type="text" data-i18n-placeholder="trait_name_placeholder" placeholder="Trait")
+              input(
+                name="attr_trait_name"
+                type="text"
+                data-i18n-placeholder="trait_name_placeholder"
+                placeholder="Trait"
+              )
             .wf-input
               label.wf-heading(data-i18n="trait_cost") Cost
-              input(name="attr_trait_cost" type="text" data-i18n-placeholder="trait_cost_placeholder" placeholder="Passive")
+              input(
+                name="attr_trait_cost"
+                type="text"
+                data-i18n-placeholder="trait_cost_placeholder"
+                placeholder="Passive"
+              )
             .wf-input.col-span-2
               label.wf-heading(data-i18n="trait_details") Details
-              textarea(name="attr_trait_details" data-i18n-placeholder="trait_details_placeholder" placeholder="Details...")
+              textarea(
+                name="attr_trait_details"
+                data-i18n-placeholder="trait_details_placeholder"
+                placeholder="Details..."
+              )
 
 include rolltemplate
 include translations

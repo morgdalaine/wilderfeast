@@ -76,10 +76,13 @@ html .charactersheet {
 }
 
 input[type=number] {
-  appearance: textfield;
+  -webkit-appearance: textfield;
+     -moz-appearance: textfield;
+          appearance: textfield;
 }
 input[type=number]::-webkit-outer-spin-button, input[type=number]::-webkit-inner-spin-button {
-  appearance: none;
+  -webkit-appearance: none;
+          appearance: none;
   margin: 0;
 }
 
@@ -403,7 +406,9 @@ button {
 }
 .wf textarea[type=number],
 .wf input[type=number] {
-  appearance: textfield;
+  -webkit-appearance: textfield;
+     -moz-appearance: textfield;
+          appearance: textfield;
   text-align: center;
   font-family: var(--font-text-title);
   border: 1px solid rgba(var(--color-rgb), 0.5);
@@ -411,7 +416,8 @@ button {
 .wf textarea[type=number]::-webkit-outer-spin-button, .wf textarea[type=number]::-webkit-inner-spin-button,
 .wf input[type=number]::-webkit-outer-spin-button,
 .wf input[type=number]::-webkit-inner-spin-button {
-  appearance: none;
+  -webkit-appearance: none;
+          appearance: none;
   margin: 0;
 }
 .wf textarea {

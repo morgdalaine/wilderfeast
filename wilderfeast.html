@@ -309,7 +309,7 @@
     </div>
   </div>
 </rolltemplate>
-<div style="display: none;"><span data-i18n="action">Action</span>
+<div style="display: none"><span data-i18n="action">Action</span>
 </div>
 <script type="text/worker">
   const STYLES = ["mighty", "precise", "swift", "tricky"];
@@ -346,9 +346,7 @@ const CONDITIONS = [
   { label: "Wounded", name: "wounded", min: 1, max: 3 },
 ];
   for (const condition in CONDITIONS) {
-  on(`change:${condition.name} change:${condition.name}_level`, (eventInfo) => {
-
-  });
+  on(`change:${condition.name} change:${condition.name}_level`, (eventInfo) => {});
 }
   for (const style of STYLES) {
   on(`clicked:${style}`, async (eventInfo) => {

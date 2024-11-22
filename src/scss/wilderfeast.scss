@@ -219,7 +219,7 @@ button {
 
   &-action,
   &-action--wild {
-    &:hover  {
+    &:hover {
       outline: 2px solid var(--container-color, var(--color-black)) !important;
     }
   }

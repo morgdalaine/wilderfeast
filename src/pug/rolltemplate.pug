@@ -25,17 +25,17 @@ mixin rollFunctions(array)
 
 mixin displayDie(die)
   +rollFunctions([`rollBetween() ${die} 1 1`])
-    span.sheet-wf-style__face-1=`{{${die}}}`
+    span.sheet-wf-style__face-1= `{{${die}}}`
   +rollFunctions([`rollBetween() ${die} 2 2`])
-    span.sheet-wf-style__face-2=`{{${die}}}`
+    span.sheet-wf-style__face-2= `{{${die}}}`
   +rollFunctions([`rollBetween() ${die} 3 3`])
-    span.sheet-wf-style__face-3=`{{${die}}}`
+    span.sheet-wf-style__face-3= `{{${die}}}`
   +rollFunctions([`rollBetween() ${die} 4 4`])
-    span.sheet-wf-style__face-4=`{{${die}}}`
+    span.sheet-wf-style__face-4= `{{${die}}}`
   +rollFunctions([`rollBetween() ${die} 5 5`])
-    span.sheet-wf-style__face-5=`{{${die}}}`
+    span.sheet-wf-style__face-5= `{{${die}}}`
   +rollFunctions([`rollBetween() ${die} 6 20`])
-    span.sheet-wf-style__face-6=`{{${die}}}`
+    span.sheet-wf-style__face-6= `{{${die}}}`
 
 rolltemplate.sheet-rolltemplate-action
   .sheet-wf-wrapper
@@ -68,16 +68,15 @@ rolltemplate.sheet-rolltemplate-action
               +tags([die])
                 +displayDie(die)
         +rollFunctions(["rollBetween() question 0 0"])
-            .sheet-wf-style__roll
-              each die in DICE
-                +tags([die])
-                  +displayDie(die)
+          .sheet-wf-style__roll
+            each die in DICE
+              +tags([die])
+                +displayDie(die)
         +rollFunctions(["rollBetween() question -1 -1"])
-            .sheet-wf-style__roll--disadvantage
-              each die in DICE
-                +tags([die])
-                  +displayDie(die)
-
+          .sheet-wf-style__roll--disadvantage
+            each die in DICE
+              +tags([die])
+                +displayDie(die)
 
       .sheet-wf-action(class="sheet-wf-action--{{action_is}}")
         +rollFunctions(["rollBetween() roll_action 1 4"])
