@@ -1,9 +1,11 @@
 @use "_reset.scss";
 @use "_tailwind.scss";
+@use "_rolltemplate.scss";
 
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Denk+One&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mohave:ital,wght@0,300..700;1,300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap');
 
 // Roll20 Reset
 .charsheet {
@@ -23,10 +25,12 @@ button {
   font-family: var(--font-text-header);
 }
 
-.wf {
+.wf,
+.sheet-rolltemplate-action {
   --font-text-title: 'Josefin Sans', sans-serif;
-  --font-text-header: 'Josefin Sans', 'Denk One', 'Cinzel', sans-serif;
-  --font-text: Lora, Cormorant, Alegreya, serif;
+  --font-text-header: Mohave, sans-serif;
+  --font-text: "Source Serif 4", serif;
+  --font-text-monospace: OCRB, "JetBrains Mono", monospace;
 
   --color-black: #030608;
   --color-white: #fff;
@@ -34,6 +38,7 @@ button {
   --color-orange: #ef8017;
   --color-red: #f04f50;
   --color-green: #208474;
+  --color-parchment: #fcf6ea;
 
   --color-black-rgb: 3, 6, 8;
   --color-white-rgb: 255, 255, 255;
@@ -41,9 +46,11 @@ button {
   --color-orange-rgb: 239, 128, 23;
   --color-red-rgb: 240, 79, 80;
   --color-green-rgb: 32, 132, 116;
+}
 
+.wf {
   background-color: var(--color-white);
-  border: 6px solid var(--color-orange);
+  border: 6px double var(--color-orange);
   padding: 0.5em;
   font-family: var(--font-text);
 
@@ -111,27 +118,6 @@ button {
     }
   }
 
-  // &-orange {
-  //   --text-normal: #{$orange};
-  //   --border-color: #{$orange};
-  //   --container-color: #{$orange};
-  // }
-  // &-navy {
-  //   --text-normal: var(--color-navy);
-  //   --border-color: var(--color-navy);
-  //   --container-color: var(--color-navy);
-  // }
-  // &-green {
-  //   --text-normal: var(--color-green);
-  //   --border-color: var(--color-green);
-  //   --container-color: var(--color-green);
-  // }
-  // &-black {
-  //   --text-normal: var(--color-black);
-  //   --border-color: var(--color-black);
-  //   --container-color: var(--color-black);
-  // }
-
   &__title {
     color: var(--color-navy);
     text-align: center;
@@ -160,7 +146,7 @@ button {
 
       span {
         vertical-align: bottom;
-        font-size: 0.8em;
+        font-size: 1em;
       }
     }
 
@@ -233,27 +219,32 @@ button {
 
   &-action,
   &-action--wild {
-    &:hover {
+    &:hover  {
       outline: 2px solid var(--container-color, var(--color-black)) !important;
     }
   }
 
   &-action {
     --container-color: var(--color-green);
-    text-align: start;
-    font-weight: 700;
-    color: var(--container-color);
-    text-transform: uppercase;
-    padding-left: 0.25em;
-    font-family: var(--font-text-header);
 
-    &--wild {
+    span {
+      text-align: start;
+      font-weight: 700;
+      color: var(--container-color);
+      text-transform: uppercase;
+      padding-inline: 0.25em 1em;
+      font-family: var(--font-text-header);
+      margin-right: auto;
+      font-size: 1.5em;
+    }
+
+    &--wild span {
       --container-color: var(--color-navy);
       text-align: center;
-      font-size: 0.8em;
+      font-size: 1em;
       color: var(--container-color);
-      font-family: var(--font-text);
-      border: 1px solid var(--container-color);
+      font-family: var(--font-text-header);
+      // outline: 1px solid var(--container-color);
       padding: 0 1em;
       text-transform: lowercase;
       font-variant: small-caps;
@@ -288,7 +279,7 @@ button {
       span {
         color: var(--text-normal);
         text-transform: uppercase;
-        font-weight: 900;
+        font-weight: 700;
       }
 
       input[type='number'] {
@@ -400,7 +391,7 @@ button {
 
         span {
           color: var(--container-color);
-          font-weight: 900;
+          font-weight: 700;
           opacity: 1;
         }
       }

@@ -1,5 +1,6 @@
 
 <div class="wf">
+  <input name="attr_advantage" value="0" type="hidden"/>
   <div class="wf__wrapper">
     <h1 class="wf__title"><span data-i18n="wilderfeast">Wilderfeast</span></h1>
     <div class="wf__header wf-navy">
@@ -284,39 +285,65 @@
     </div>
   </div>
 </div>
+<rolltemplate class="sheet-rolltemplate-action">
+  <div class="sheet-wf-wrapper">
+    <div class="sheet-wf-header">{{#character_name}}
+      <div class="sheet-wf-character-name"><span>{{character_name}}</span></div>{{/character_name}}{{#wild}}
+      <div class="sheet-wf-go-wild"><span data-i18n="goes_wild">Goes&#10;Wild</span></div>{{/wild}}{{#focus}}
+      <div class="sheet-wf-focus-up"><span data-i18n="focuses_up">Focuses&#10;Up</span></div>{{/focus}}
+      <div class="sheet-wf-circumstance">{{#rollBetween() question 1 1}}<span data-i18n="advantage">Advantage!</span>{{/rollBetween() question 1 1}}{{#rollBetween() question -1 -1}}<span data-i18n="disadvantage">Disadvantage!</span>{{/rollBetween() question -1 -1}}
+      </div>
+      <div class="sheet-wf-style-and-skill"><span class="sheet-wf-header--style">{{style}}</span>&nbsp;<span class="sheet-wf-header--skill">{{skill}}</span></div>
+    </div>
+    <div class="sheet-wf-dice-tray">
+      <div class="sheet-wf-style">{{#rollBetween() question 1 1}}
+        <div class="sheet-wf-style__roll--advantage">{{#roll_style1}}{{#rollBetween() roll_style1 1 1}}<span class="sheet-wf-style__face-1">{{roll_style1}}</span>{{/rollBetween() roll_style1 1 1}}{{#rollBetween() roll_style1 2 2}}<span class="sheet-wf-style__face-2">{{roll_style1}}</span>{{/rollBetween() roll_style1 2 2}}{{#rollBetween() roll_style1 3 3}}<span class="sheet-wf-style__face-3">{{roll_style1}}</span>{{/rollBetween() roll_style1 3 3}}{{#rollBetween() roll_style1 4 4}}<span class="sheet-wf-style__face-4">{{roll_style1}}</span>{{/rollBetween() roll_style1 4 4}}{{#rollBetween() roll_style1 5 5}}<span class="sheet-wf-style__face-5">{{roll_style1}}</span>{{/rollBetween() roll_style1 5 5}}{{#rollBetween() roll_style1 6 20}}<span class="sheet-wf-style__face-6">{{roll_style1}}</span>{{/rollBetween() roll_style1 6 20}}{{/roll_style1}}{{#roll_style2}}{{#rollBetween() roll_style2 1 1}}<span class="sheet-wf-style__face-1">{{roll_style2}}</span>{{/rollBetween() roll_style2 1 1}}{{#rollBetween() roll_style2 2 2}}<span class="sheet-wf-style__face-2">{{roll_style2}}</span>{{/rollBetween() roll_style2 2 2}}{{#rollBetween() roll_style2 3 3}}<span class="sheet-wf-style__face-3">{{roll_style2}}</span>{{/rollBetween() roll_style2 3 3}}{{#rollBetween() roll_style2 4 4}}<span class="sheet-wf-style__face-4">{{roll_style2}}</span>{{/rollBetween() roll_style2 4 4}}{{#rollBetween() roll_style2 5 5}}<span class="sheet-wf-style__face-5">{{roll_style2}}</span>{{/rollBetween() roll_style2 5 5}}{{#rollBetween() roll_style2 6 20}}<span class="sheet-wf-style__face-6">{{roll_style2}}</span>{{/rollBetween() roll_style2 6 20}}{{/roll_style2}}{{#roll_style3}}{{#rollBetween() roll_style3 1 1}}<span class="sheet-wf-style__face-1">{{roll_style3}}</span>{{/rollBetween() roll_style3 1 1}}{{#rollBetween() roll_style3 2 2}}<span class="sheet-wf-style__face-2">{{roll_style3}}</span>{{/rollBetween() roll_style3 2 2}}{{#rollBetween() roll_style3 3 3}}<span class="sheet-wf-style__face-3">{{roll_style3}}</span>{{/rollBetween() roll_style3 3 3}}{{#rollBetween() roll_style3 4 4}}<span class="sheet-wf-style__face-4">{{roll_style3}}</span>{{/rollBetween() roll_style3 4 4}}{{#rollBetween() roll_style3 5 5}}<span class="sheet-wf-style__face-5">{{roll_style3}}</span>{{/rollBetween() roll_style3 5 5}}{{#rollBetween() roll_style3 6 20}}<span class="sheet-wf-style__face-6">{{roll_style3}}</span>{{/rollBetween() roll_style3 6 20}}{{/roll_style3}}{{#roll_style4}}{{#rollBetween() roll_style4 1 1}}<span class="sheet-wf-style__face-1">{{roll_style4}}</span>{{/rollBetween() roll_style4 1 1}}{{#rollBetween() roll_style4 2 2}}<span class="sheet-wf-style__face-2">{{roll_style4}}</span>{{/rollBetween() roll_style4 2 2}}{{#rollBetween() roll_style4 3 3}}<span class="sheet-wf-style__face-3">{{roll_style4}}</span>{{/rollBetween() roll_style4 3 3}}{{#rollBetween() roll_style4 4 4}}<span class="sheet-wf-style__face-4">{{roll_style4}}</span>{{/rollBetween() roll_style4 4 4}}{{#rollBetween() roll_style4 5 5}}<span class="sheet-wf-style__face-5">{{roll_style4}}</span>{{/rollBetween() roll_style4 5 5}}{{#rollBetween() roll_style4 6 20}}<span class="sheet-wf-style__face-6">{{roll_style4}}</span>{{/rollBetween() roll_style4 6 20}}{{/roll_style4}}{{#roll_style5}}{{#rollBetween() roll_style5 1 1}}<span class="sheet-wf-style__face-1">{{roll_style5}}</span>{{/rollBetween() roll_style5 1 1}}{{#rollBetween() roll_style5 2 2}}<span class="sheet-wf-style__face-2">{{roll_style5}}</span>{{/rollBetween() roll_style5 2 2}}{{#rollBetween() roll_style5 3 3}}<span class="sheet-wf-style__face-3">{{roll_style5}}</span>{{/rollBetween() roll_style5 3 3}}{{#rollBetween() roll_style5 4 4}}<span class="sheet-wf-style__face-4">{{roll_style5}}</span>{{/rollBetween() roll_style5 4 4}}{{#rollBetween() roll_style5 5 5}}<span class="sheet-wf-style__face-5">{{roll_style5}}</span>{{/rollBetween() roll_style5 5 5}}{{#rollBetween() roll_style5 6 20}}<span class="sheet-wf-style__face-6">{{roll_style5}}</span>{{/rollBetween() roll_style5 6 20}}{{/roll_style5}}{{#roll_style6}}{{#rollBetween() roll_style6 1 1}}<span class="sheet-wf-style__face-1">{{roll_style6}}</span>{{/rollBetween() roll_style6 1 1}}{{#rollBetween() roll_style6 2 2}}<span class="sheet-wf-style__face-2">{{roll_style6}}</span>{{/rollBetween() roll_style6 2 2}}{{#rollBetween() roll_style6 3 3}}<span class="sheet-wf-style__face-3">{{roll_style6}}</span>{{/rollBetween() roll_style6 3 3}}{{#rollBetween() roll_style6 4 4}}<span class="sheet-wf-style__face-4">{{roll_style6}}</span>{{/rollBetween() roll_style6 4 4}}{{#rollBetween() roll_style6 5 5}}<span class="sheet-wf-style__face-5">{{roll_style6}}</span>{{/rollBetween() roll_style6 5 5}}{{#rollBetween() roll_style6 6 20}}<span class="sheet-wf-style__face-6">{{roll_style6}}</span>{{/rollBetween() roll_style6 6 20}}{{/roll_style6}}{{#roll_style7}}{{#rollBetween() roll_style7 1 1}}<span class="sheet-wf-style__face-1">{{roll_style7}}</span>{{/rollBetween() roll_style7 1 1}}{{#rollBetween() roll_style7 2 2}}<span class="sheet-wf-style__face-2">{{roll_style7}}</span>{{/rollBetween() roll_style7 2 2}}{{#rollBetween() roll_style7 3 3}}<span class="sheet-wf-style__face-3">{{roll_style7}}</span>{{/rollBetween() roll_style7 3 3}}{{#rollBetween() roll_style7 4 4}}<span class="sheet-wf-style__face-4">{{roll_style7}}</span>{{/rollBetween() roll_style7 4 4}}{{#rollBetween() roll_style7 5 5}}<span class="sheet-wf-style__face-5">{{roll_style7}}</span>{{/rollBetween() roll_style7 5 5}}{{#rollBetween() roll_style7 6 20}}<span class="sheet-wf-style__face-6">{{roll_style7}}</span>{{/rollBetween() roll_style7 6 20}}{{/roll_style7}}{{#roll_style8}}{{#rollBetween() roll_style8 1 1}}<span class="sheet-wf-style__face-1">{{roll_style8}}</span>{{/rollBetween() roll_style8 1 1}}{{#rollBetween() roll_style8 2 2}}<span class="sheet-wf-style__face-2">{{roll_style8}}</span>{{/rollBetween() roll_style8 2 2}}{{#rollBetween() roll_style8 3 3}}<span class="sheet-wf-style__face-3">{{roll_style8}}</span>{{/rollBetween() roll_style8 3 3}}{{#rollBetween() roll_style8 4 4}}<span class="sheet-wf-style__face-4">{{roll_style8}}</span>{{/rollBetween() roll_style8 4 4}}{{#rollBetween() roll_style8 5 5}}<span class="sheet-wf-style__face-5">{{roll_style8}}</span>{{/rollBetween() roll_style8 5 5}}{{#rollBetween() roll_style8 6 20}}<span class="sheet-wf-style__face-6">{{roll_style8}}</span>{{/rollBetween() roll_style8 6 20}}{{/roll_style8}}{{#roll_style9}}{{#rollBetween() roll_style9 1 1}}<span class="sheet-wf-style__face-1">{{roll_style9}}</span>{{/rollBetween() roll_style9 1 1}}{{#rollBetween() roll_style9 2 2}}<span class="sheet-wf-style__face-2">{{roll_style9}}</span>{{/rollBetween() roll_style9 2 2}}{{#rollBetween() roll_style9 3 3}}<span class="sheet-wf-style__face-3">{{roll_style9}}</span>{{/rollBetween() roll_style9 3 3}}{{#rollBetween() roll_style9 4 4}}<span class="sheet-wf-style__face-4">{{roll_style9}}</span>{{/rollBetween() roll_style9 4 4}}{{#rollBetween() roll_style9 5 5}}<span class="sheet-wf-style__face-5">{{roll_style9}}</span>{{/rollBetween() roll_style9 5 5}}{{#rollBetween() roll_style9 6 20}}<span class="sheet-wf-style__face-6">{{roll_style9}}</span>{{/rollBetween() roll_style9 6 20}}{{/roll_style9}}{{#roll_style10}}{{#rollBetween() roll_style10 1 1}}<span class="sheet-wf-style__face-1">{{roll_style10}}</span>{{/rollBetween() roll_style10 1 1}}{{#rollBetween() roll_style10 2 2}}<span class="sheet-wf-style__face-2">{{roll_style10}}</span>{{/rollBetween() roll_style10 2 2}}{{#rollBetween() roll_style10 3 3}}<span class="sheet-wf-style__face-3">{{roll_style10}}</span>{{/rollBetween() roll_style10 3 3}}{{#rollBetween() roll_style10 4 4}}<span class="sheet-wf-style__face-4">{{roll_style10}}</span>{{/rollBetween() roll_style10 4 4}}{{#rollBetween() roll_style10 5 5}}<span class="sheet-wf-style__face-5">{{roll_style10}}</span>{{/rollBetween() roll_style10 5 5}}{{#rollBetween() roll_style10 6 20}}<span class="sheet-wf-style__face-6">{{roll_style10}}</span>{{/rollBetween() roll_style10 6 20}}{{/roll_style10}}
+        </div>{{/rollBetween() question 1 1}}{{#rollBetween() question 0 0}}
+        <div class="sheet-wf-style__roll">{{#roll_style1}}{{#rollBetween() roll_style1 1 1}}<span class="sheet-wf-style__face-1">{{roll_style1}}</span>{{/rollBetween() roll_style1 1 1}}{{#rollBetween() roll_style1 2 2}}<span class="sheet-wf-style__face-2">{{roll_style1}}</span>{{/rollBetween() roll_style1 2 2}}{{#rollBetween() roll_style1 3 3}}<span class="sheet-wf-style__face-3">{{roll_style1}}</span>{{/rollBetween() roll_style1 3 3}}{{#rollBetween() roll_style1 4 4}}<span class="sheet-wf-style__face-4">{{roll_style1}}</span>{{/rollBetween() roll_style1 4 4}}{{#rollBetween() roll_style1 5 5}}<span class="sheet-wf-style__face-5">{{roll_style1}}</span>{{/rollBetween() roll_style1 5 5}}{{#rollBetween() roll_style1 6 20}}<span class="sheet-wf-style__face-6">{{roll_style1}}</span>{{/rollBetween() roll_style1 6 20}}{{/roll_style1}}{{#roll_style2}}{{#rollBetween() roll_style2 1 1}}<span class="sheet-wf-style__face-1">{{roll_style2}}</span>{{/rollBetween() roll_style2 1 1}}{{#rollBetween() roll_style2 2 2}}<span class="sheet-wf-style__face-2">{{roll_style2}}</span>{{/rollBetween() roll_style2 2 2}}{{#rollBetween() roll_style2 3 3}}<span class="sheet-wf-style__face-3">{{roll_style2}}</span>{{/rollBetween() roll_style2 3 3}}{{#rollBetween() roll_style2 4 4}}<span class="sheet-wf-style__face-4">{{roll_style2}}</span>{{/rollBetween() roll_style2 4 4}}{{#rollBetween() roll_style2 5 5}}<span class="sheet-wf-style__face-5">{{roll_style2}}</span>{{/rollBetween() roll_style2 5 5}}{{#rollBetween() roll_style2 6 20}}<span class="sheet-wf-style__face-6">{{roll_style2}}</span>{{/rollBetween() roll_style2 6 20}}{{/roll_style2}}{{#roll_style3}}{{#rollBetween() roll_style3 1 1}}<span class="sheet-wf-style__face-1">{{roll_style3}}</span>{{/rollBetween() roll_style3 1 1}}{{#rollBetween() roll_style3 2 2}}<span class="sheet-wf-style__face-2">{{roll_style3}}</span>{{/rollBetween() roll_style3 2 2}}{{#rollBetween() roll_style3 3 3}}<span class="sheet-wf-style__face-3">{{roll_style3}}</span>{{/rollBetween() roll_style3 3 3}}{{#rollBetween() roll_style3 4 4}}<span class="sheet-wf-style__face-4">{{roll_style3}}</span>{{/rollBetween() roll_style3 4 4}}{{#rollBetween() roll_style3 5 5}}<span class="sheet-wf-style__face-5">{{roll_style3}}</span>{{/rollBetween() roll_style3 5 5}}{{#rollBetween() roll_style3 6 20}}<span class="sheet-wf-style__face-6">{{roll_style3}}</span>{{/rollBetween() roll_style3 6 20}}{{/roll_style3}}{{#roll_style4}}{{#rollBetween() roll_style4 1 1}}<span class="sheet-wf-style__face-1">{{roll_style4}}</span>{{/rollBetween() roll_style4 1 1}}{{#rollBetween() roll_style4 2 2}}<span class="sheet-wf-style__face-2">{{roll_style4}}</span>{{/rollBetween() roll_style4 2 2}}{{#rollBetween() roll_style4 3 3}}<span class="sheet-wf-style__face-3">{{roll_style4}}</span>{{/rollBetween() roll_style4 3 3}}{{#rollBetween() roll_style4 4 4}}<span class="sheet-wf-style__face-4">{{roll_style4}}</span>{{/rollBetween() roll_style4 4 4}}{{#rollBetween() roll_style4 5 5}}<span class="sheet-wf-style__face-5">{{roll_style4}}</span>{{/rollBetween() roll_style4 5 5}}{{#rollBetween() roll_style4 6 20}}<span class="sheet-wf-style__face-6">{{roll_style4}}</span>{{/rollBetween() roll_style4 6 20}}{{/roll_style4}}{{#roll_style5}}{{#rollBetween() roll_style5 1 1}}<span class="sheet-wf-style__face-1">{{roll_style5}}</span>{{/rollBetween() roll_style5 1 1}}{{#rollBetween() roll_style5 2 2}}<span class="sheet-wf-style__face-2">{{roll_style5}}</span>{{/rollBetween() roll_style5 2 2}}{{#rollBetween() roll_style5 3 3}}<span class="sheet-wf-style__face-3">{{roll_style5}}</span>{{/rollBetween() roll_style5 3 3}}{{#rollBetween() roll_style5 4 4}}<span class="sheet-wf-style__face-4">{{roll_style5}}</span>{{/rollBetween() roll_style5 4 4}}{{#rollBetween() roll_style5 5 5}}<span class="sheet-wf-style__face-5">{{roll_style5}}</span>{{/rollBetween() roll_style5 5 5}}{{#rollBetween() roll_style5 6 20}}<span class="sheet-wf-style__face-6">{{roll_style5}}</span>{{/rollBetween() roll_style5 6 20}}{{/roll_style5}}{{#roll_style6}}{{#rollBetween() roll_style6 1 1}}<span class="sheet-wf-style__face-1">{{roll_style6}}</span>{{/rollBetween() roll_style6 1 1}}{{#rollBetween() roll_style6 2 2}}<span class="sheet-wf-style__face-2">{{roll_style6}}</span>{{/rollBetween() roll_style6 2 2}}{{#rollBetween() roll_style6 3 3}}<span class="sheet-wf-style__face-3">{{roll_style6}}</span>{{/rollBetween() roll_style6 3 3}}{{#rollBetween() roll_style6 4 4}}<span class="sheet-wf-style__face-4">{{roll_style6}}</span>{{/rollBetween() roll_style6 4 4}}{{#rollBetween() roll_style6 5 5}}<span class="sheet-wf-style__face-5">{{roll_style6}}</span>{{/rollBetween() roll_style6 5 5}}{{#rollBetween() roll_style6 6 20}}<span class="sheet-wf-style__face-6">{{roll_style6}}</span>{{/rollBetween() roll_style6 6 20}}{{/roll_style6}}{{#roll_style7}}{{#rollBetween() roll_style7 1 1}}<span class="sheet-wf-style__face-1">{{roll_style7}}</span>{{/rollBetween() roll_style7 1 1}}{{#rollBetween() roll_style7 2 2}}<span class="sheet-wf-style__face-2">{{roll_style7}}</span>{{/rollBetween() roll_style7 2 2}}{{#rollBetween() roll_style7 3 3}}<span class="sheet-wf-style__face-3">{{roll_style7}}</span>{{/rollBetween() roll_style7 3 3}}{{#rollBetween() roll_style7 4 4}}<span class="sheet-wf-style__face-4">{{roll_style7}}</span>{{/rollBetween() roll_style7 4 4}}{{#rollBetween() roll_style7 5 5}}<span class="sheet-wf-style__face-5">{{roll_style7}}</span>{{/rollBetween() roll_style7 5 5}}{{#rollBetween() roll_style7 6 20}}<span class="sheet-wf-style__face-6">{{roll_style7}}</span>{{/rollBetween() roll_style7 6 20}}{{/roll_style7}}{{#roll_style8}}{{#rollBetween() roll_style8 1 1}}<span class="sheet-wf-style__face-1">{{roll_style8}}</span>{{/rollBetween() roll_style8 1 1}}{{#rollBetween() roll_style8 2 2}}<span class="sheet-wf-style__face-2">{{roll_style8}}</span>{{/rollBetween() roll_style8 2 2}}{{#rollBetween() roll_style8 3 3}}<span class="sheet-wf-style__face-3">{{roll_style8}}</span>{{/rollBetween() roll_style8 3 3}}{{#rollBetween() roll_style8 4 4}}<span class="sheet-wf-style__face-4">{{roll_style8}}</span>{{/rollBetween() roll_style8 4 4}}{{#rollBetween() roll_style8 5 5}}<span class="sheet-wf-style__face-5">{{roll_style8}}</span>{{/rollBetween() roll_style8 5 5}}{{#rollBetween() roll_style8 6 20}}<span class="sheet-wf-style__face-6">{{roll_style8}}</span>{{/rollBetween() roll_style8 6 20}}{{/roll_style8}}{{#roll_style9}}{{#rollBetween() roll_style9 1 1}}<span class="sheet-wf-style__face-1">{{roll_style9}}</span>{{/rollBetween() roll_style9 1 1}}{{#rollBetween() roll_style9 2 2}}<span class="sheet-wf-style__face-2">{{roll_style9}}</span>{{/rollBetween() roll_style9 2 2}}{{#rollBetween() roll_style9 3 3}}<span class="sheet-wf-style__face-3">{{roll_style9}}</span>{{/rollBetween() roll_style9 3 3}}{{#rollBetween() roll_style9 4 4}}<span class="sheet-wf-style__face-4">{{roll_style9}}</span>{{/rollBetween() roll_style9 4 4}}{{#rollBetween() roll_style9 5 5}}<span class="sheet-wf-style__face-5">{{roll_style9}}</span>{{/rollBetween() roll_style9 5 5}}{{#rollBetween() roll_style9 6 20}}<span class="sheet-wf-style__face-6">{{roll_style9}}</span>{{/rollBetween() roll_style9 6 20}}{{/roll_style9}}{{#roll_style10}}{{#rollBetween() roll_style10 1 1}}<span class="sheet-wf-style__face-1">{{roll_style10}}</span>{{/rollBetween() roll_style10 1 1}}{{#rollBetween() roll_style10 2 2}}<span class="sheet-wf-style__face-2">{{roll_style10}}</span>{{/rollBetween() roll_style10 2 2}}{{#rollBetween() roll_style10 3 3}}<span class="sheet-wf-style__face-3">{{roll_style10}}</span>{{/rollBetween() roll_style10 3 3}}{{#rollBetween() roll_style10 4 4}}<span class="sheet-wf-style__face-4">{{roll_style10}}</span>{{/rollBetween() roll_style10 4 4}}{{#rollBetween() roll_style10 5 5}}<span class="sheet-wf-style__face-5">{{roll_style10}}</span>{{/rollBetween() roll_style10 5 5}}{{#rollBetween() roll_style10 6 20}}<span class="sheet-wf-style__face-6">{{roll_style10}}</span>{{/rollBetween() roll_style10 6 20}}{{/roll_style10}}
+        </div>{{/rollBetween() question 0 0}}{{#rollBetween() question -1 -1}}
+        <div class="sheet-wf-style__roll--disadvantage">{{#roll_style1}}{{#rollBetween() roll_style1 1 1}}<span class="sheet-wf-style__face-1">{{roll_style1}}</span>{{/rollBetween() roll_style1 1 1}}{{#rollBetween() roll_style1 2 2}}<span class="sheet-wf-style__face-2">{{roll_style1}}</span>{{/rollBetween() roll_style1 2 2}}{{#rollBetween() roll_style1 3 3}}<span class="sheet-wf-style__face-3">{{roll_style1}}</span>{{/rollBetween() roll_style1 3 3}}{{#rollBetween() roll_style1 4 4}}<span class="sheet-wf-style__face-4">{{roll_style1}}</span>{{/rollBetween() roll_style1 4 4}}{{#rollBetween() roll_style1 5 5}}<span class="sheet-wf-style__face-5">{{roll_style1}}</span>{{/rollBetween() roll_style1 5 5}}{{#rollBetween() roll_style1 6 20}}<span class="sheet-wf-style__face-6">{{roll_style1}}</span>{{/rollBetween() roll_style1 6 20}}{{/roll_style1}}{{#roll_style2}}{{#rollBetween() roll_style2 1 1}}<span class="sheet-wf-style__face-1">{{roll_style2}}</span>{{/rollBetween() roll_style2 1 1}}{{#rollBetween() roll_style2 2 2}}<span class="sheet-wf-style__face-2">{{roll_style2}}</span>{{/rollBetween() roll_style2 2 2}}{{#rollBetween() roll_style2 3 3}}<span class="sheet-wf-style__face-3">{{roll_style2}}</span>{{/rollBetween() roll_style2 3 3}}{{#rollBetween() roll_style2 4 4}}<span class="sheet-wf-style__face-4">{{roll_style2}}</span>{{/rollBetween() roll_style2 4 4}}{{#rollBetween() roll_style2 5 5}}<span class="sheet-wf-style__face-5">{{roll_style2}}</span>{{/rollBetween() roll_style2 5 5}}{{#rollBetween() roll_style2 6 20}}<span class="sheet-wf-style__face-6">{{roll_style2}}</span>{{/rollBetween() roll_style2 6 20}}{{/roll_style2}}{{#roll_style3}}{{#rollBetween() roll_style3 1 1}}<span class="sheet-wf-style__face-1">{{roll_style3}}</span>{{/rollBetween() roll_style3 1 1}}{{#rollBetween() roll_style3 2 2}}<span class="sheet-wf-style__face-2">{{roll_style3}}</span>{{/rollBetween() roll_style3 2 2}}{{#rollBetween() roll_style3 3 3}}<span class="sheet-wf-style__face-3">{{roll_style3}}</span>{{/rollBetween() roll_style3 3 3}}{{#rollBetween() roll_style3 4 4}}<span class="sheet-wf-style__face-4">{{roll_style3}}</span>{{/rollBetween() roll_style3 4 4}}{{#rollBetween() roll_style3 5 5}}<span class="sheet-wf-style__face-5">{{roll_style3}}</span>{{/rollBetween() roll_style3 5 5}}{{#rollBetween() roll_style3 6 20}}<span class="sheet-wf-style__face-6">{{roll_style3}}</span>{{/rollBetween() roll_style3 6 20}}{{/roll_style3}}{{#roll_style4}}{{#rollBetween() roll_style4 1 1}}<span class="sheet-wf-style__face-1">{{roll_style4}}</span>{{/rollBetween() roll_style4 1 1}}{{#rollBetween() roll_style4 2 2}}<span class="sheet-wf-style__face-2">{{roll_style4}}</span>{{/rollBetween() roll_style4 2 2}}{{#rollBetween() roll_style4 3 3}}<span class="sheet-wf-style__face-3">{{roll_style4}}</span>{{/rollBetween() roll_style4 3 3}}{{#rollBetween() roll_style4 4 4}}<span class="sheet-wf-style__face-4">{{roll_style4}}</span>{{/rollBetween() roll_style4 4 4}}{{#rollBetween() roll_style4 5 5}}<span class="sheet-wf-style__face-5">{{roll_style4}}</span>{{/rollBetween() roll_style4 5 5}}{{#rollBetween() roll_style4 6 20}}<span class="sheet-wf-style__face-6">{{roll_style4}}</span>{{/rollBetween() roll_style4 6 20}}{{/roll_style4}}{{#roll_style5}}{{#rollBetween() roll_style5 1 1}}<span class="sheet-wf-style__face-1">{{roll_style5}}</span>{{/rollBetween() roll_style5 1 1}}{{#rollBetween() roll_style5 2 2}}<span class="sheet-wf-style__face-2">{{roll_style5}}</span>{{/rollBetween() roll_style5 2 2}}{{#rollBetween() roll_style5 3 3}}<span class="sheet-wf-style__face-3">{{roll_style5}}</span>{{/rollBetween() roll_style5 3 3}}{{#rollBetween() roll_style5 4 4}}<span class="sheet-wf-style__face-4">{{roll_style5}}</span>{{/rollBetween() roll_style5 4 4}}{{#rollBetween() roll_style5 5 5}}<span class="sheet-wf-style__face-5">{{roll_style5}}</span>{{/rollBetween() roll_style5 5 5}}{{#rollBetween() roll_style5 6 20}}<span class="sheet-wf-style__face-6">{{roll_style5}}</span>{{/rollBetween() roll_style5 6 20}}{{/roll_style5}}{{#roll_style6}}{{#rollBetween() roll_style6 1 1}}<span class="sheet-wf-style__face-1">{{roll_style6}}</span>{{/rollBetween() roll_style6 1 1}}{{#rollBetween() roll_style6 2 2}}<span class="sheet-wf-style__face-2">{{roll_style6}}</span>{{/rollBetween() roll_style6 2 2}}{{#rollBetween() roll_style6 3 3}}<span class="sheet-wf-style__face-3">{{roll_style6}}</span>{{/rollBetween() roll_style6 3 3}}{{#rollBetween() roll_style6 4 4}}<span class="sheet-wf-style__face-4">{{roll_style6}}</span>{{/rollBetween() roll_style6 4 4}}{{#rollBetween() roll_style6 5 5}}<span class="sheet-wf-style__face-5">{{roll_style6}}</span>{{/rollBetween() roll_style6 5 5}}{{#rollBetween() roll_style6 6 20}}<span class="sheet-wf-style__face-6">{{roll_style6}}</span>{{/rollBetween() roll_style6 6 20}}{{/roll_style6}}{{#roll_style7}}{{#rollBetween() roll_style7 1 1}}<span class="sheet-wf-style__face-1">{{roll_style7}}</span>{{/rollBetween() roll_style7 1 1}}{{#rollBetween() roll_style7 2 2}}<span class="sheet-wf-style__face-2">{{roll_style7}}</span>{{/rollBetween() roll_style7 2 2}}{{#rollBetween() roll_style7 3 3}}<span class="sheet-wf-style__face-3">{{roll_style7}}</span>{{/rollBetween() roll_style7 3 3}}{{#rollBetween() roll_style7 4 4}}<span class="sheet-wf-style__face-4">{{roll_style7}}</span>{{/rollBetween() roll_style7 4 4}}{{#rollBetween() roll_style7 5 5}}<span class="sheet-wf-style__face-5">{{roll_style7}}</span>{{/rollBetween() roll_style7 5 5}}{{#rollBetween() roll_style7 6 20}}<span class="sheet-wf-style__face-6">{{roll_style7}}</span>{{/rollBetween() roll_style7 6 20}}{{/roll_style7}}{{#roll_style8}}{{#rollBetween() roll_style8 1 1}}<span class="sheet-wf-style__face-1">{{roll_style8}}</span>{{/rollBetween() roll_style8 1 1}}{{#rollBetween() roll_style8 2 2}}<span class="sheet-wf-style__face-2">{{roll_style8}}</span>{{/rollBetween() roll_style8 2 2}}{{#rollBetween() roll_style8 3 3}}<span class="sheet-wf-style__face-3">{{roll_style8}}</span>{{/rollBetween() roll_style8 3 3}}{{#rollBetween() roll_style8 4 4}}<span class="sheet-wf-style__face-4">{{roll_style8}}</span>{{/rollBetween() roll_style8 4 4}}{{#rollBetween() roll_style8 5 5}}<span class="sheet-wf-style__face-5">{{roll_style8}}</span>{{/rollBetween() roll_style8 5 5}}{{#rollBetween() roll_style8 6 20}}<span class="sheet-wf-style__face-6">{{roll_style8}}</span>{{/rollBetween() roll_style8 6 20}}{{/roll_style8}}{{#roll_style9}}{{#rollBetween() roll_style9 1 1}}<span class="sheet-wf-style__face-1">{{roll_style9}}</span>{{/rollBetween() roll_style9 1 1}}{{#rollBetween() roll_style9 2 2}}<span class="sheet-wf-style__face-2">{{roll_style9}}</span>{{/rollBetween() roll_style9 2 2}}{{#rollBetween() roll_style9 3 3}}<span class="sheet-wf-style__face-3">{{roll_style9}}</span>{{/rollBetween() roll_style9 3 3}}{{#rollBetween() roll_style9 4 4}}<span class="sheet-wf-style__face-4">{{roll_style9}}</span>{{/rollBetween() roll_style9 4 4}}{{#rollBetween() roll_style9 5 5}}<span class="sheet-wf-style__face-5">{{roll_style9}}</span>{{/rollBetween() roll_style9 5 5}}{{#rollBetween() roll_style9 6 20}}<span class="sheet-wf-style__face-6">{{roll_style9}}</span>{{/rollBetween() roll_style9 6 20}}{{/roll_style9}}{{#roll_style10}}{{#rollBetween() roll_style10 1 1}}<span class="sheet-wf-style__face-1">{{roll_style10}}</span>{{/rollBetween() roll_style10 1 1}}{{#rollBetween() roll_style10 2 2}}<span class="sheet-wf-style__face-2">{{roll_style10}}</span>{{/rollBetween() roll_style10 2 2}}{{#rollBetween() roll_style10 3 3}}<span class="sheet-wf-style__face-3">{{roll_style10}}</span>{{/rollBetween() roll_style10 3 3}}{{#rollBetween() roll_style10 4 4}}<span class="sheet-wf-style__face-4">{{roll_style10}}</span>{{/rollBetween() roll_style10 4 4}}{{#rollBetween() roll_style10 5 5}}<span class="sheet-wf-style__face-5">{{roll_style10}}</span>{{/rollBetween() roll_style10 5 5}}{{#rollBetween() roll_style10 6 20}}<span class="sheet-wf-style__face-6">{{roll_style10}}</span>{{/rollBetween() roll_style10 6 20}}{{/roll_style10}}
+        </div>{{/rollBetween() question -1 -1}}
+      </div>
+      <div class="sheet-wf-action sheet-wf-action--{{action_is}}">{{#rollBetween() roll_action 1 4}}<span class="sheet-wf-action__roll--partial">{{roll_action}}</span><span class="sheet-wf-action__result" data-i18n="success_partial">Partial Success</span>{{/rollBetween() roll_action 1 4}}{{#rollBetween() roll_action 5 7}}<span class="sheet-wf-action__roll">{{roll_action}}</span><span class="sheet-wf-action__result" data-i18n="success_standard">Standard Success</span>{{/rollBetween() roll_action 5 7}}{{#rollBetween() roll_action 8 20}}<span class="sheet-wf-action__roll--critical">{{roll_action}}</span><span class="sheet-wf-action__result" data-i18n="success_critical">Critical Success</span>{{/rollBetween() roll_action 8 20}}
+      </div>
+    </div>
+  </div>
+</rolltemplate>
+<div style="display: none;"><span data-i18n="action">Action</span>
+</div>
 <script type="text/worker">
   const STYLES = ["mighty", "precise", "swift", "tricky"];
 const SKILLS = [
-	"assurance",
-	"display",
-	"shot",
-	"call",
-	"grab",
-	"strike",
-	"craft",
-	"hoard",
-	"study",
-	"cure",
-	"search",
-	"traversal",
+  "assurance",
+  "display",
+  "shot",
+  "call",
+  "grab",
+  "strike",
+  "craft",
+  "hoard",
+  "study",
+  "cure",
+  "search",
+  "traversal",
 ];
 
 const CONDITIONS = [
-	{ label: "Burned", name: "burned" },
-	{ label: "Caught", name: "caught" },
-	{ label: "Confused", name: "confused", min: 1 },
-	{ label: "Discordant", name: "discordant" },
-	{ label: "Expanded", name: "expanded" },
-	{ label: "Exposed", name: "exposed" },
-	{ label: "Fatigued", name: "fatigued", min: 1 },
-	{ label: "Frightened", name: "frightened", min: 1 },
-	{ label: "Invigorated", name: "invigorated", min: 1 },
-	{ label: "Hidden", name: "hidden" },
-	{ label: "Poisoned", name: "poisoned", min: 1 },
-	{ label: "Rehabilitating", name: "rehabilitating", min: 1, max: 6 },
-	{ label: "Rested", name: "rested", min: 1 },
-	{ label: "Stunned", name: "stunned", min: 1 },
-	{ label: "Wounded", name: "wounded", min: 1, max: 3 },
+  { label: "Burned", name: "burned" },
+  { label: "Caught", name: "caught" },
+  { label: "Confused", name: "confused", min: 1 },
+  { label: "Discordant", name: "discordant" },
+  { label: "Expanded", name: "expanded" },
+  { label: "Exposed", name: "exposed" },
+  { label: "Fatigued", name: "fatigued", min: 1 },
+  { label: "Frightened", name: "frightened", min: 1 },
+  { label: "Invigorated", name: "invigorated", min: 1 },
+  { label: "Hidden", name: "hidden" },
+  { label: "Poisoned", name: "poisoned", min: 1 },
+  { label: "Rehabilitating", name: "rehabilitating", min: 1, max: 6 },
+  { label: "Rested", name: "rested", min: 1 },
+  { label: "Stunned", name: "stunned", min: 1 },
+  { label: "Wounded", name: "wounded", min: 1, max: 3 },
 ];
   for (const condition in CONDITIONS) {
   on(`change:${condition.name} change:${condition.name}_level`, (eventInfo) => {
@@ -332,12 +359,75 @@ const CONDITIONS = [
   });
 }
 
-const rollAction = async (btn, wild = false) => {
-  getAttrs([...STYLES, ...SKILLS, 'skill'], (attributes) => {
-    const style = +attributes[btn] || 0;
-    const skill = +attributes.skill || 0;
+/**
+ *
+ * @param {string} template name of rolltemplate to use
+ * @param {object} properties key value pairs
+ * @param {function} callback startRoll callback function; should include `finishRoll()`
+ */
+const makeRoll = async (template, properties, callback) => {
+  const rollstring = createRollString(template, properties);
+  await startRoll(rollstring, callback);
+};
 
-    console.debug(btn, wild, style, skill);
+/**
+ * Create roll string including whisper, template, and roll properties
+ * @param {string} template name of rolltemplate to use
+ * @param {object} properties key value pairs
+ * @returns finished roll string
+ */
+const createRollString = (template, properties) => {
+  const props = Object.entries(properties)
+    .map(([key, val]) => `{{${key}=${val}}}`)
+    .join("");
+
+  // return `@{wtype}&{template:${template}}${props}`;
+  return `&{template:${template}}${props}`;
+};
+
+const rollAction = async (btn, wild = false) => {
+  const conditions = CONDITIONS.flatMap((c) => [c.name, `${c.name}_level`]);
+  getAttrs([...STYLES, ...SKILLS, ...conditions, "skill", "advantage"], (attributes) => {
+    const skillName = attributes.skill;
+    const style = Number(attributes[btn]) ?? 0;
+    const skill = Number(attributes[skillName]) ?? 0;
+
+    console.debug(attributes);
+    const properties = {};
+
+    const dic = {};
+    dic.action = getTranslationByKey("action") || "Action";
+    dic.frightened = getTranslationByKey("frightened") || "Frightened";
+
+    properties.character_name = "@{character_name}";
+    properties.style = `^{${btn}}`;
+    properties.skill = `^{${skillName}} (+${skill})`;
+
+    const action_is = wild ? "wild" : "focus";
+    properties[action_is] = action_is;
+    properties.action_is = action_is;
+
+    properties.question = "[[?{Circumstances|Normal,0|Advantage,1|Disadvantage,-1}]]";
+
+    const dice = style - (wild ? 1 : 0);
+    for (const key of Array.from(Array(dice).keys(), (k) => k + 1)) {
+      properties[`roll_style${key}`] = "[[1d6]]";
+    }
+
+    const frightenedLevel =
+      attributes.frightened === "on" ? Number(attributes.frightened_level) : 0;
+    const frightenedMod = frightenedLevel > 0 ? `+ ${-1 * frightenedLevel}[${dic.frightened}]` : "";
+    properties.roll_action = `[[1d${wild ? 20 : 8}[${dic.action}] ${frightenedMod}]]`;
+
+    makeRoll("action", properties, ({ rollId, results }) => {
+      finishRoll(rollId, results);
+
+      // const answer = Number(results.question.result);
+      // const circumstance = answer > 0 ? "advantage" : answer < 0 ? "disadvantage" : "";
+      // finishRoll(rollId, {
+      //   [circumstance]: true,
+      // });
+    });
   });
 };
 
