@@ -2,12 +2,12 @@
 @use "_tailwind.scss";
 @use "_rolltemplate.scss";
 
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Mohave:ital,wght@0,300..700;1,300..700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@100..800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Mohave:ital,wght@0,300..700;1,300..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@100..800&display=swap");
 
 // Roll20 Reset
 .charsheet {
@@ -29,11 +29,12 @@ button {
 
 .wf,
 .sheet-rolltemplate-action {
-  --font-text-title: 'Josefin Sans', sans-serif;
+  --font-text-title: "Josefin Sans", sans-serif;
   --font-text-header: Mohave, sans-serif;
   --font-text: "Source Serif 4", serif;
   --font-text-monospace: OCRB, "JetBrains Mono", monospace;
-  --font-text-input: "Playpen Sans", "Nanum Pen Script", "Comic Sans MS", sans-serif;
+  --font-text-input: "Playpen Sans", "Nanum Pen Script", "Comic Sans MS",
+    sans-serif;
 
   --color-black: #030608;
   --color-white: #fff;
@@ -53,6 +54,7 @@ button {
 }
 
 .wf {
+  position: relative;
   background-color: var(--color-white);
   border: 6px double var(--color-orange);
   padding: 0.5em;
@@ -71,12 +73,12 @@ button {
     border-radius: 0;
     font-family: var(--font-text-input);
 
-    &[type='text'] {
+    &[type="text"] {
       padding-left: 0.5em;
       border: 1px solid rgba(var(--color-rgb), 0.5);
     }
 
-    &[type='number'] {
+    &[type="number"] {
       appearance: textfield;
       text-align: center;
       font-family: var(--font-text-input);
@@ -92,11 +94,12 @@ button {
 
   textarea {
     width: auto;
-    min-height: 4rem;
-    max-height: 10rem;
+    min-height: 3em;
+    max-height: 10em;
     resize: vertical;
     margin: 0;
     padding: 0 0.25em;
+    border: 1px solid rgba(var(--color-rgb), 0.5);
 
     scrollbar-width: thin;
 
@@ -112,7 +115,7 @@ button {
     }
   }
 
-  $colors: 'black', 'white', 'navy', 'orange', 'red', 'green';
+  $colors: "black", "white", "navy", "orange", "red", "green";
 
   @each $color in $colors {
     &-#{$color} {
@@ -120,6 +123,37 @@ button {
       --border-color: var(--color-#{$color});
       --container-color: var(--color-#{$color});
       --color-rgb: var(--color-#{$color}-rgb, var(--color-orange-rgb));
+    }
+  }
+
+  &__sheet-toggle {
+    position: absolute;
+    top: -1em;
+    right: 1em;
+    text-align: center;
+    text-transform: uppercase;
+    float: right;
+
+    padding-inline: 0.5em;
+    background-color: var(--color-white);
+
+    label {
+      font-family: var(--font-text-monospace);
+      color: var(--color-orange);
+    }
+    select {
+      color: var(--color-navy);
+      font-family: var(--font-text-monospace);
+      text-transform: uppercase;
+    }
+  }
+
+  @each $sheet in "wilder", "pack", "area" {
+    .#{$sheet} {
+      display: none;
+    }
+    input[name="attr_sheet"][value="#{$sheet}"] ~ .#{$sheet} {
+      display: grid;
     }
   }
 
@@ -141,8 +175,11 @@ button {
     grid-template-columns: 3fr 1fr 1fr;
     margin-bottom: 1em;
   }
+  .pack > .wf__header {
+    grid-template-columns: 1fr 1fr auto;
+  }
 
-  &__footer {
+  &__version {
     float: right;
 
     padding-inline: 0.5em;
@@ -152,6 +189,10 @@ button {
 
     font-family: var(--font-text-monospace);
     text-transform: uppercase;
+
+    span + span {
+      color: var(--color-navy);
+    }
   }
 
   &-input {
@@ -179,19 +220,43 @@ button {
       display: grid;
       grid-template-rows: auto 1fr;
     }
-
     &.flex {
       label {
         margin: 0 auto;
       }
     }
-
-    &.grid {
+    &.inline {
+      display: grid;
+      gap: 0.25em;
       grid-template-columns: 1fr 3fr;
     }
 
-    &.text-center {
-      align-items: center;
+    &--valuemax {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0 0.25em;
+      padding: 0.25em;
+      align-items: flex-end;
+
+      > label {
+        color: var(--container-color);
+        text-transform: uppercase;
+        margin-bottom: 0.25em;
+      }
+
+      .wf-input {
+        display: grid;
+        background-color: var(--color-white);
+
+        label {
+          font-size: 0.8rem;
+          text-align: center;
+        }
+
+        input[type="number"] {
+          margin: auto;
+        }
+      }
     }
   }
 
@@ -225,7 +290,7 @@ button {
     grid-template-columns: 1fr 3.5em auto;
     gap: 0.25em;
 
-    +.wf__style {
+    + .wf__style {
       margin-top: 0.25em;
       // border-top: 1px solid var(--color-orange);
     }
@@ -242,13 +307,20 @@ button {
     overflow: hidden;
     background-color: var(--color-parchment);
 
-    img,
-    svg {
+    img {
       object-fit: cover;
       object-position: top;
       height: 100%;
       width: 100%;
       border: none;
+    }
+  }
+  .area .wf__portrait {
+    background-color: transparent;
+    border: none;
+
+    img {
+      object-fit: contain;
     }
   }
 
@@ -317,7 +389,7 @@ button {
         font-weight: 700;
       }
 
-      input[type='number'] {
+      input[type="number"] {
         margin-left: auto;
         border: none;
         border-left: 1px solid var(--border-color);
@@ -353,7 +425,7 @@ button {
           text-align: center;
         }
 
-        input[type='number'] {
+        input[type="number"] {
           margin: auto;
         }
       }
@@ -362,20 +434,16 @@ button {
 
   &-technique,
   &-trait {
-    input[name*='cost'] {
+    input[name*="cost"] {
       font-style: italic;
     }
   }
 
   &-technique {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 0 0.25em;
   }
 
   &-trait {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 0 0.25em;
 
     &--default {
@@ -404,7 +472,6 @@ button {
 
       label {
         margin: auto 0;
-
       }
 
       span {
@@ -431,13 +498,16 @@ button {
         }
       }
     }
+  }
 
-
-
+  &-ingredient,
+  &-monster {
+    display: grid;
+    grid-template-columns: 4fr minmax(5em, 1fr);
   }
 
   .repcontainer {
-    .repitem+.repitem {
+    .repitem + .repitem {
       margin-top: 0.25em;
       padding-top: 0.25em;
       border-top: 1px dashed var(--border-color);

@@ -33,4 +33,4 @@ const CONDITIONS = [
 ];
 const CONDITIONS_REQUEST = CONDITIONS.flatMap((c) => [c.name, `${c.name}_level`]);
 
-const MAX_FIELDS = ["hp", "tool_durability"];
+const MAX_FIELDS = ["hp", "tool_durability", "harmony"];

@@ -99,89 +99,70 @@ input[type=number]::-webkit-outer-spin-button, input[type=number]::-webkit-inner
   max-width: 5rem;
 }
 
-.flex {
+.wf .flex {
   display: flex;
-  gap: 0.5em;
+  gap: 0 0.25em;
 }
-
-.grid {
+.wf .grid {
   display: grid;
   grid-template-rows: auto 1fr;
+  gap: 0 0.25em;
 }
-
-.col-span-1 {
+.wf .col-span-1 {
   grid-column: span 1/span 1;
 }
-
-.col-span-2 {
+.wf .col-span-2 {
   grid-column: span 2/span 2;
 }
-
-.col-span-3 {
+.wf .col-span-3 {
   grid-column: span 3/span 3;
 }
-
-.col-span-4 {
+.wf .col-span-4 {
   grid-column: span 4/span 4;
 }
-
-.col-span-5 {
+.wf .col-span-5 {
   grid-column: span 5/span 5;
 }
-
-.col-span-6 {
+.wf .col-span-6 {
   grid-column: span 6/span 6;
 }
-
-.grid-cols-2 {
+.wf .grid-cols-2 {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
-
-.grid-cols-3 {
+.wf .grid-cols-3 {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
-
-.grid-cols-4 {
+.wf .grid-cols-4 {
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
-
-.grid-cols-5 {
+.wf .grid-cols-5 {
   grid-template-columns: repeat(5, minmax(0, 1fr));
 }
-
-.grid-cols-6 {
+.wf .grid-cols-6 {
   grid-template-columns: repeat(6, minmax(0, 1fr));
 }
-
-.text-start {
+.wf .text-start {
   text-align: start;
 }
-
-.text-center {
+.wf .text-center {
   text-align: center;
 }
-
-.text-end {
+.wf .text-end {
   text-align: end;
 }
-
-.text-justify {
+.wf .text-justify {
   text-align: justify;
 }
-
-.flex-row {
+.wf .flex-row {
   flex-direction: row;
 }
-
-.flex-row-reverse {
+.wf .flex-row-reverse {
   flex-direction: row-reverse;
 }
-
-.flex-col {
+.wf .flex-col {
   flex-direction: column;
 }
-
-.flex-col-reverse {
+.wf .flex-col-reverse {
   flex-direction: column-reverse;
 }
 
@@ -370,7 +351,8 @@ button {
   --font-text-header: Mohave, sans-serif;
   --font-text: "Source Serif 4", serif;
   --font-text-monospace: OCRB, "JetBrains Mono", monospace;
-  --font-text-input: "Playpen Sans", "Nanum Pen Script", "Comic Sans MS", sans-serif;
+  --font-text-input: "Playpen Sans", "Nanum Pen Script", "Comic Sans MS",
+    sans-serif;
   --color-black: #030608;
   --color-white: #fff;
   --color-navy: #2f4d9a;
@@ -388,6 +370,7 @@ button {
 }
 
 .wf {
+  position: relative;
   background-color: var(--color-white);
   border: 6px double var(--color-orange);
   padding: 0.5em;
@@ -428,11 +411,12 @@ button {
 }
 .wf textarea {
   width: auto;
-  min-height: 4rem;
-  max-height: 10rem;
+  min-height: 3em;
+  max-height: 10em;
   resize: vertical;
   margin: 0;
   padding: 0 0.25em;
+  border: 1px solid rgba(var(--color-rgb), 0.5);
   scrollbar-width: thin;
 }
 @supports selector(::-webkit-scrollbar) {
@@ -480,6 +464,43 @@ button {
   --container-color: var(--color-green);
   --color-rgb: var(--color-green-rgb, var(--color-orange-rgb));
 }
+.wf__sheet-toggle {
+  position: absolute;
+  top: -1em;
+  right: 1em;
+  text-align: center;
+  text-transform: uppercase;
+  float: right;
+  padding-inline: 0.5em;
+  background-color: var(--color-white);
+}
+.wf__sheet-toggle label {
+  font-family: var(--font-text-monospace);
+  color: var(--color-orange);
+}
+.wf__sheet-toggle select {
+  color: var(--color-navy);
+  font-family: var(--font-text-monospace);
+  text-transform: uppercase;
+}
+.wf .wilder {
+  display: none;
+}
+.wf input[name=attr_sheet][value=wilder] ~ .wilder {
+  display: grid;
+}
+.wf .pack {
+  display: none;
+}
+.wf input[name=attr_sheet][value=pack] ~ .pack {
+  display: grid;
+}
+.wf .area {
+  display: none;
+}
+.wf input[name=attr_sheet][value=area] ~ .area {
+  display: grid;
+}
 .wf__title {
   color: var(--color-navy);
   text-align: center;
@@ -496,7 +517,10 @@ button {
   grid-template-columns: 3fr 1fr 1fr;
   margin-bottom: 1em;
 }
-.wf__footer {
+.wf .pack > .wf__header {
+  grid-template-columns: 1fr 1fr auto;
+}
+.wf__version {
   float: right;
   padding-inline: 0.5em;
   margin-right: 1em;
@@ -504,6 +528,9 @@ button {
   color: var(--color-orange);
   font-family: var(--font-text-monospace);
   text-transform: uppercase;
+}
+.wf__version span + span {
+  color: var(--color-navy);
 }
 .wf-input {
   padding: 0.25em;
@@ -529,11 +556,33 @@ button {
 .wf-input.flex label {
   margin: 0 auto;
 }
-.wf-input.grid {
+.wf-input.inline {
+  display: grid;
+  gap: 0.25em;
   grid-template-columns: 1fr 3fr;
 }
-.wf-input.text-center {
-  align-items: center;
+.wf-input--valuemax {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0 0.25em;
+  padding: 0.25em;
+  align-items: flex-end;
+}
+.wf-input--valuemax > label {
+  color: var(--container-color);
+  text-transform: uppercase;
+  margin-bottom: 0.25em;
+}
+.wf-input--valuemax .wf-input {
+  display: grid;
+  background-color: var(--color-white);
+}
+.wf-input--valuemax .wf-input label {
+  font-size: 0.8rem;
+  text-align: center;
+}
+.wf-input--valuemax .wf-input input[type=number] {
+  margin: auto;
 }
 .wf-heading {
   text-align: center;
@@ -573,8 +622,7 @@ button {
   overflow: hidden;
   background-color: var(--color-parchment);
 }
-.wf__portrait img,
-.wf__portrait svg {
+.wf__portrait img {
   -o-object-fit: cover;
      object-fit: cover;
   -o-object-position: top;
@@ -582,6 +630,14 @@ button {
   height: 100%;
   width: 100%;
   border: none;
+}
+.wf .area .wf__portrait {
+  background-color: transparent;
+  border: none;
+}
+.wf .area .wf__portrait img {
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 .wf-action:hover, .wf-action--wild:hover {
   outline: 2px solid var(--container-color, var(--color-black)) !important;
@@ -670,13 +726,9 @@ button {
   font-style: italic;
 }
 .wf-technique {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0 0.25em;
 }
 .wf-trait {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0 0.25em;
 }
 .wf-trait--default {
@@ -717,6 +769,10 @@ button {
   color: var(--container-color);
   font-weight: 700;
   opacity: 1;
+}
+.wf-ingredient, .wf-monster {
+  display: grid;
+  grid-template-columns: 4fr minmax(5em, 1fr);
 }
 .wf .repcontainer .repitem + .repitem {
   margin-top: 0.25em;
