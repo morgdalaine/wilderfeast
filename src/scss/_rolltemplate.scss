@@ -25,6 +25,7 @@
     .sheet-wf {
       &-wrapper {
         background-color: var(--color-white);
+        background-image: linear-gradient(to right, var(--color-parchment), transparent, var(--color-parchment));
         border: 3px double var(--color-orange);
         padding: 0 0.5em 0.5em;
       }
