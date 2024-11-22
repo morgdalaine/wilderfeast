@@ -7,8 +7,6 @@
 
 An unofficial Roll20 sheet for [Wilderfeast](https://horribleguild.com/us/product-category/roleplaying-games/wilderfeast) Tabletop RPG!
 
-This sheet uses `pug` and SCSS to build the HTML and CSS files respectively. Please do not directly edit the HTML or CSS directly: it will be **wiped away** when the `npm` scripts are ran.
-
 ## Install
 
 ```sh
@@ -17,6 +15,9 @@ $ npm install
 ```
 
 ## Usage
+
+> [!WARNING] 
+> This sheet uses `pug` and SCSS to build the HTML and CSS files respectively. Please do not directly edit the HTML or CSS directly: it will be **wiped away** when the `npm` scripts are ran.
 
 ```sh
 # Run the development environment
