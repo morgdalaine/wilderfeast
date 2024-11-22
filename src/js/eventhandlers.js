@@ -3,9 +3,7 @@ for (const condition of CONDITIONS) {
   on(`change:${condition.name} change:${condition.name}_level`, (eventInfo) => {
     getAttrs(CONDITIONS_REQUEST, (attributes) => {
       const state = attributes[condition.name];
-      const level = Number(attributes[`${condition.name}_level`]);
-
-      if (state !== "on") return;
+      const level = state === "on" ? Number(attributes[`${condition.name}_level`]) : 0;
 
       switch (condition.name) {
         case "fatigued":
