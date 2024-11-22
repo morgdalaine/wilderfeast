@@ -6,7 +6,7 @@
     background-color: var(--color-white);
     padding: 0.5em;
 
-    .inlinerollresult {
+    .inlinerollresult.inlinerollresult {
       position: relative;
       background: transparent;
       color: var(--dice-color);
@@ -25,13 +25,17 @@
     .sheet-wf {
       &-wrapper {
         background-color: var(--color-white);
-        background-image: linear-gradient(to right, var(--color-parchment), transparent, var(--color-parchment));
+        background-image: linear-gradient(
+          to right,
+          var(--color-parchment),
+          transparent,
+          var(--color-parchment)
+        );
         border: 3px double var(--color-orange);
         padding: 0 0.5em 0.5em;
       }
 
       &-header {
-
         // Style and Skill
         &--style {
           text-transform: uppercase;
@@ -45,7 +49,6 @@
           font-family: var(--font-text-header);
           font-weight: 700;
           color: var(--color-navy);
-
         }
       }
 
@@ -65,7 +68,6 @@
           display: flex;
           gap: 1em;
         }
-
       }
 
       // Flags
@@ -76,9 +78,13 @@
         justify-content: end;
         top: 0;
         right: 0;
-        padding: .25em;
+        padding: 0.25em;
         background-color: transparent;
-        background-image: linear-gradient(to top right, transparent 50% 50%, var(--color-red) 100%);
+        background-image: linear-gradient(
+          to top right,
+          transparent 50% 50%,
+          var(--color-red) 100%
+        );
         color: var(--color-white);
         -webkit-text-stroke: 2px var(--color-red);
 
@@ -107,9 +113,13 @@
         justify-content: end;
         bottom: 0;
         left: 0;
-        padding: .25em;
+        padding: 0.25em;
         background-color: transparent;
-        background-image: linear-gradient(to bottom left, transparent 50% 50%, var(--color-navy) 100%);
+        background-image: linear-gradient(
+          to bottom left,
+          transparent 50% 50%,
+          var(--color-navy) 100%
+        );
         color: var(--color-white);
         -webkit-text-stroke: 2px var(--color-navy);
 
@@ -148,7 +158,6 @@
         text-align: center;
 
         &__roll {
-
           .inlinerollresult {
             font-size: 2em;
           }

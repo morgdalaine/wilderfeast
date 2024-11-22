@@ -191,7 +191,7 @@ input[type=number]::-webkit-outer-spin-button, input[type=number]::-webkit-inner
   background-color: var(--color-white);
   padding: 0.5em;
 }
-.sheet-rolltemplate-action .inlinerollresult {
+.sheet-rolltemplate-action .inlinerollresult.inlinerollresult {
   position: relative;
   background: transparent;
   color: var(--dice-color);
@@ -201,7 +201,7 @@ input[type=number]::-webkit-outer-spin-button, input[type=number]::-webkit-inner
   line-height: 1;
   vertical-align: middle;
 }
-.sheet-rolltemplate-action .inlinerollresult.fullcrit, .sheet-rolltemplate-action .inlinerollresult.fullfail {
+.sheet-rolltemplate-action .inlinerollresult.inlinerollresult.fullcrit, .sheet-rolltemplate-action .inlinerollresult.inlinerollresult.fullfail {
   border: none;
 }
 .sheet-rolltemplate-action .sheet-wf-wrapper {
