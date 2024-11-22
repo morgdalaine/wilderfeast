@@ -1,3 +1,4 @@
+// Handle conditions that affect other rolls
 for (const condition of CONDITIONS) {
   on(`change:${condition.name} change:${condition.name}_level`, (eventInfo) => {
     getAttrs(CONDITIONS_REQUEST, (attributes) => {
@@ -18,6 +19,7 @@ for (const condition of CONDITIONS) {
   });
 }
 
+// Handle attributes with an underscore_max attribute
 for (const field of MAX_FIELDS) {
   on(`change:${field}`, (eventInfo) => {
     if (eventInfo.sourceType !== "player") return;

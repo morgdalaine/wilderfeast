@@ -393,7 +393,8 @@ const CONDITIONS = [
 const CONDITIONS_REQUEST = CONDITIONS.flatMap((c) => [c.name, `${c.name}_level`]);
 
 const MAX_FIELDS = ["hp", "tool_durability"];
-  for (const condition of CONDITIONS) {
+  // Handle conditions that affect other rolls
+for (const condition of CONDITIONS) {
   on(`change:${condition.name} change:${condition.name}_level`, (eventInfo) => {
     getAttrs(CONDITIONS_REQUEST, (attributes) => {
       const state = attributes[condition.name];
@@ -413,6 +414,7 @@ const MAX_FIELDS = ["hp", "tool_durability"];
   });
 }
 
+// Handle attributes with an underscore_max attribute
 for (const field of MAX_FIELDS) {
   on(`change:${field}`, (eventInfo) => {
     if (eventInfo.sourceType !== "player") return;
