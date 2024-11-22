@@ -3,8 +3,11 @@
 ![Version](https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/license/MIT)
 [![Twitter: morgdalaine](https://img.shields.io/twitter/follow/morgdalaine.svg?style=social)](https://twitter.com/morgdalaine)
+[![Follow @morgdalaine.bsky.social](https://img.shields.io/badge/follow-@morgdalaine.bsky.social-whitesmoke?style=social&logo=bluesky)](https://bsky.app/profile/morgdalaine.bsky.social)
 
 An unofficial Roll20 sheet for [Wilderfeast](https://horribleguild.com/us/product-category/roleplaying-games/wilderfeast) Tabletop RPG!
+
+This sheet uses `pug` and SCSS to build the HTML and CSS files respectively. Please do not directly edit the HTML or CSS directly: it will be **wiped away** when the `npm` scripts are ran.
 
 ## Install
 
