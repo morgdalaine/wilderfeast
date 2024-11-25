@@ -1,11 +1,12 @@
 
 <div class="wf">
   <div class="wf__wrapper">
-    <input name="attr_advantage" value="0" type="hidden"/>
-    <input name="attr_hp_mod" value="0" type="hidden"/>
-    <input name="attr_version" value="0.2" type="hidden"/>
-    <input name="attr_skill" value="assurance" type="hidden"/>
+    <input name="attr_version" value="1.0" type="hidden"/>
     <input name="attr_sheet" value="wilder" type="hidden"/>
+    <input name="attr_style" value="mighty" type="hidden"/>
+    <input name="attr_skill" value="assurance" type="hidden"/>
+    <input name="attr_hp_mod" value="0" type="hidden"/>
+    <input name="attr_advantage" value="0" type="hidden"/>
     <h1 class="wf__title"><span data-i18n="wilderfeast">Wilderfeast</span></h1>
     <div class="wf__sheet-toggle">
       <label data-i18n="sheet">Sheet</label>
@@ -34,24 +35,48 @@
         <div class="wf-container wf-orange col-span-2 wf__styles">
           <h3 class="wf-heading" data-i18n="styles">Styles</h3>
           <div class="wf__style">
-            <button class="wf-action" name="act_mighty" type="action"><span data-i18n="mighty">mighty</span></button>
-            <input name="attr_mighty" type="number" value="1" min="1" max="5" placeholder="1"/>
-            <button class="wf-action--wild" name="act_mighty_wild" type="action"><span data-i18n="go_wild">Go Wild</span></button>
+            <div class="wf-input--style">
+              <label for="mighty">
+                <input name="attr_style" id="mighty" type="radio" value="mighty"/><span data-i18n="mighty">mighty</span>
+              </label>
+            </div>
+            <div class="wf-input">
+              <label class="sr-only" data-i18n="mighty_value">mighty value</label>
+              <input name="attr_mighty" type="number" value="1" min="1" max="5" placeholder="1"/>
+            </div>
           </div>
           <div class="wf__style">
-            <button class="wf-action" name="act_precise" type="action"><span data-i18n="precise">precise</span></button>
-            <input name="attr_precise" type="number" value="1" min="1" max="5" placeholder="1"/>
-            <button class="wf-action--wild" name="act_precise_wild" type="action"><span data-i18n="go_wild">Go Wild</span></button>
+            <div class="wf-input--style">
+              <label for="precise">
+                <input name="attr_style" id="precise" type="radio" value="precise"/><span data-i18n="precise">precise</span>
+              </label>
+            </div>
+            <div class="wf-input">
+              <label class="sr-only" data-i18n="precise_value">precise value</label>
+              <input name="attr_precise" type="number" value="1" min="1" max="5" placeholder="1"/>
+            </div>
           </div>
           <div class="wf__style">
-            <button class="wf-action" name="act_swift" type="action"><span data-i18n="swift">swift</span></button>
-            <input name="attr_swift" type="number" value="1" min="1" max="5" placeholder="1"/>
-            <button class="wf-action--wild" name="act_swift_wild" type="action"><span data-i18n="go_wild">Go Wild</span></button>
+            <div class="wf-input--style">
+              <label for="swift">
+                <input name="attr_style" id="swift" type="radio" value="swift"/><span data-i18n="swift">swift</span>
+              </label>
+            </div>
+            <div class="wf-input">
+              <label class="sr-only" data-i18n="swift_value">swift value</label>
+              <input name="attr_swift" type="number" value="1" min="1" max="5" placeholder="1"/>
+            </div>
           </div>
           <div class="wf__style">
-            <button class="wf-action" name="act_tricky" type="action"><span data-i18n="tricky">tricky</span></button>
-            <input name="attr_tricky" type="number" value="1" min="1" max="5" placeholder="1"/>
-            <button class="wf-action--wild" name="act_tricky_wild" type="action"><span data-i18n="go_wild">Go Wild</span></button>
+            <div class="wf-input--style">
+              <label for="tricky">
+                <input name="attr_style" id="tricky" type="radio" value="tricky"/><span data-i18n="tricky">tricky</span>
+              </label>
+            </div>
+            <div class="wf-input">
+              <label class="sr-only" data-i18n="tricky_value">tricky value</label>
+              <input name="attr_tricky" type="number" value="1" min="1" max="5" placeholder="1"/>
+            </div>
           </div>
         </div>
         <div class="wf-container wf-navy col-span-4 wf__skills">
@@ -129,18 +154,30 @@
             </label>
           </div>
         </div>
-        <div class="wf-container wf-black col-span-2 grid grid-cols-2 wf__stamina">
-          <h3 class="wf-heading" data-i18n="stamina">Stamina</h3>
-          <div class="wf-input flex flex-col text-center">
-            <label data-i18n="current">Current</label>
-            <input name="attr_hp" min="0" placeholder="0" type="number"/>
-          </div>
-          <div class="wf-input flex flex-col text-center">
-            <label data-i18n="max">Max</label>
-            <input name="attr_hp_max" min="0" placeholder="0" type="number"/>
+        <div class="wf-container wf-black col-span-6 wf__dice-tray">
+          <div class="wf__actions grid">
+            <div class="empty"></div>
+            <div><span data-i18n="select_style_skill">Select a STYLE and SKILL.</span></div>
+            <button class="wf-action" name="act_focus_up" type="action"><img src="https://raw.githubusercontent.com/morgdalaine/wilderfeast/refs/heads/main/assets/d8.svg"/><span data-i18n="focus_up">FOCUS UP</span><img src="https://raw.githubusercontent.com/morgdalaine/wilderfeast/refs/heads/main/assets/d8.svg"/></button>
+            <div><span data-i18n="choose_action_die_focus">Add a d8 Action Die to your dice pool.</span></div>
+            <button class="wf-action--wild" name="act_go_wild" type="action"><img src="https://raw.githubusercontent.com/morgdalaine/wilderfeast/refs/heads/main/assets/d20.svg"/><span data-i18n="go_wild">GO WILD</span><img src="https://raw.githubusercontent.com/morgdalaine/wilderfeast/refs/heads/main/assets/d20.svg"/></button>
+            <div><span data-i18n="choose_action_die_wild">Choose one of your TRAITS and describe how it helps you in this situation. Then, remove 1 Style Die and replace it with a d20 Action Die.</span></div>
           </div>
         </div>
-        <div class="wf-container wf-red col-span-4 wf__conditions grid grid-cols-3">
+        <div class="wf-container wf-black col-span-2 wf__stamina">
+          <h3 class="wf-heading" data-i18n="stamina">Stamina</h3>
+          <div class="wf-input--valuemax">
+            <div class="wf-input">
+              <label data-i18n="current">Current</label>
+              <input name="attr_hp" placeholder="0" min="0" type="number"/>
+            </div>
+            <div class="wf-input">
+              <label data-i18n="max">Max</label>
+              <input name="attr_hp_max" placeholder="0" min="0" type="number"/>
+            </div>
+          </div>
+        </div>
+        <div class="wf-container wf-red col-span-4 wf__conditions grid">
           <h3 class="wf-heading" data-i18n="conditions">Conditions</h3>
           <div class="wf-input">
             <label>
@@ -322,19 +359,19 @@
           <h3 class="wf-heading" data-i18n="three_course_background">3 Course Background</h3>
           <div class="wf-input">
             <label data-i18n="upbringing">Upbringing</label>
-            <textarea name="upbringing" data-i18n-placeholder="upbringing_placeholder" placeholder="What is the meal that defines your childhood?"></textarea>
+            <textarea name="attr_upbringing" data-i18n-placeholder="upbringing_placeholder" placeholder="What is the meal that defines your childhood?"></textarea>
           </div>
           <div class="wf-input">
             <label data-i18n="initiation">Initiation</label>
-            <textarea name="initiation" data-i18n-placeholder="initiation_placeholder" placeholder="What is the meal that made you a wilder?"></textarea>
+            <textarea name="attr_initiation" data-i18n-placeholder="initiation_placeholder" placeholder="What is the meal that made you a wilder?"></textarea>
           </div>
           <div class="wf-input">
             <label data-i18n="ambition">Ambition</label>
-            <textarea name="ambition" data-i18n-placeholder="ambition_placeholder" placeholder="What is the meal you want to eat most?"></textarea>
+            <textarea name="attr_ambition" data-i18n-placeholder="ambition_placeholder" placeholder="What is the meal you want to eat most?"></textarea>
           </div>
           <div class="wf-input">
             <label data-i18n="connection">Connection</label>
-            <textarea name="connection" data-i18n-placeholder="connection_placeholder" placeholder="The two of you share a bond over this dish."></textarea>
+            <textarea name="attr_connection" data-i18n-placeholder="connection_placeholder" placeholder="The two of you share a bond over this dish."></textarea>
           </div>
         </div>
         <div class="wf-container wf-green col-span-6 wf__notes">
@@ -638,14 +675,12 @@ for (const field of MAX_FIELDS) {
     });
   });
 }
-  for (const style of STYLES) {
-  on(`clicked:${style}`, async (eventInfo) => {
-    rollAction(style);
-  });
-  on(`clicked:${style}_wild`, async (eventInfo) => {
-    rollAction(style, true);
-  });
-}
+  on("clicked:focus_up", async (eventInfo) => {
+  rollAction();
+});
+on("clicked:go_wild", async (eventInfo) => {
+  rollAction(true);
+});
 
 /**
  *
@@ -673,49 +708,54 @@ const createRollString = (template, properties) => {
   return `&{template:${template}}${props}`;
 };
 
-const rollAction = async (btn, wild = false) => {
-  getAttrs([...STYLES, ...SKILLS, ...CONDITIONS_REQUEST, "skill", "advantage"], (attributes) => {
-    const skillName = attributes.skill;
-    const style = Number(attributes[btn]) ?? 0;
-    const skill = Number(attributes[skillName]) ?? 0;
+const rollAction = async (wild = false) => {
+  getAttrs(
+    ["style", "skill", "advantage", ...STYLES, ...SKILLS, ...CONDITIONS_REQUEST],
+    (attributes) => {
+      const styleName = attributes.style;
+      const skillName = attributes.skill;
+      const style = Number(attributes[styleName]) ?? 0;
+      const skill = Number(attributes[skillName]) ?? 0;
 
-    console.debug(attributes);
-    const properties = {};
+      console.debug(attributes);
+      const properties = {};
 
-    const dic = {};
-    dic.action = getTranslationByKey("action") || "Action";
-    dic.frightened = getTranslationByKey("frightened") || "Frightened";
+      const dic = {};
+      dic.action = getTranslationByKey("action") || "Action";
+      dic.frightened = getTranslationByKey("frightened") || "Frightened";
 
-    properties.character_name = "@{character_name}";
-    properties.style = `^{${btn}}`;
-    properties.skill = `^{${skillName}} (+${skill})`;
+      properties.character_name = "@{character_name}";
+      properties.style = `^{${styleName}}`;
+      properties.skill = `^{${skillName}} (+${skill})`;
 
-    const action_is = wild ? "wild" : "focus";
-    properties[action_is] = action_is;
-    properties.action_is = action_is;
+      const action_is = wild ? "wild" : "focus";
+      properties[action_is] = action_is;
+      properties.action_is = action_is;
 
-    properties.question = "[[?{Circumstances|Normal,0|Advantage,1|Disadvantage,-1}]]";
+      properties.question = "[[?{Circumstances|Normal,0|Advantage,1|Disadvantage,-1}]]";
 
-    const dice = style - (wild ? 1 : 0);
-    for (const key of Array.from(Array(dice).keys(), (k) => k + 1)) {
-      properties[`roll_style${key}`] = "[[1d6]]";
+      const dice = style - (wild ? 1 : 0);
+      for (const key of Array.from(Array(dice).keys(), (k) => k + 1)) {
+        properties[`roll_style${key}`] = "[[1d6]]";
+      }
+
+      const frightenedLevel =
+        attributes.frightened === "on" ? Number(attributes.frightened_level) : 0;
+      const frightenedMod =
+        frightenedLevel > 0 ? `+ ${-1 * frightenedLevel}[${dic.frightened}]` : "";
+      properties.roll_action = `[[1d${wild ? 20 : 8}[${dic.action}] ${frightenedMod}]]`;
+
+      makeRoll("action", properties, ({ rollId, results }) => {
+        finishRoll(rollId, results);
+
+        // const answer = Number(results.question.result);
+        // const circumstance = answer > 0 ? "advantage" : answer < 0 ? "disadvantage" : "";
+        // finishRoll(rollId, {
+        //   [circumstance]: true,
+        // });
+      });
     }
-
-    const frightenedLevel =
-      attributes.frightened === "on" ? Number(attributes.frightened_level) : 0;
-    const frightenedMod = frightenedLevel > 0 ? `+ ${-1 * frightenedLevel}[${dic.frightened}]` : "";
-    properties.roll_action = `[[1d${wild ? 20 : 8}[${dic.action}] ${frightenedMod}]]`;
-
-    makeRoll("action", properties, ({ rollId, results }) => {
-      finishRoll(rollId, results);
-
-      // const answer = Number(results.question.result);
-      // const circumstance = answer > 0 ? "advantage" : answer < 0 ? "disadvantage" : "";
-      // finishRoll(rollId, {
-      //   [circumstance]: true,
-      // });
-    });
-  });
+  );
 };
 
 </script>

@@ -65,6 +65,12 @@ button {
     font-family: var(--font-text-header);
     margin-bottom: 0;
     padding-right: 0;
+
+    &:has(:checked) {
+      span {
+        text-decoration: underline;
+      }
+    }
   }
 
   textarea,
@@ -116,7 +122,6 @@ button {
   }
 
   $colors: "black", "white", "navy", "orange", "red", "green";
-
   @each $color in $colors {
     &-#{$color} {
       --text-normal: var(--color-#{$color});
@@ -126,7 +131,7 @@ button {
     }
   }
 
-  &__sheet-toggle {
+  .wf__sheet-toggle {
     position: absolute;
     top: -1em;
     right: 1em;
@@ -157,6 +162,16 @@ button {
     }
   }
 
+  .repcontainer {
+    .repitem + .repitem {
+      margin-top: 0.25em;
+      padding-top: 0.25em;
+      border-top: 1px dashed var(--border-color);
+    }
+  }
+}
+
+.wf .wf {
   &__title {
     color: var(--color-navy);
     text-align: center;
@@ -172,7 +187,7 @@ button {
 
   &__header {
     display: grid;
-    grid-template-columns: 3fr 1fr 1fr;
+    grid-template-columns: 2fr 1fr 1fr;
     margin-bottom: 1em;
   }
   .pack > .wf__header {
@@ -195,6 +210,20 @@ button {
     }
   }
 
+  &-span {
+    &--focus-up {
+      text-transform: uppercase;
+      font-family: var(--font-text-header);
+      font-weight: 700;
+      color: var(--color-green);
+    }
+    &--go-wild {
+      text-transform: uppercase;
+      font-family: var(--font-text-header);
+      font-weight: 700;
+      color: var(--color-navy);
+    }
+  }
   &-input {
     padding: 0.25em;
 
@@ -212,7 +241,8 @@ button {
       width: 100%;
     }
 
-    input[type="checkbox"] {
+    input[type="checkbox"],
+    input[type="radio"] {
       margin-right: 0.25em;
     }
 
@@ -231,6 +261,25 @@ button {
       grid-template-columns: 1fr 3fr;
     }
 
+    &--style {
+      @extend .wf-input;
+
+      --container-color: var(--color-green);
+
+      display: inline-block;
+      width: 100%;
+      padding: 0;
+
+      label {
+        text-align: start;
+        font-weight: 700;
+        color: var(--container-color);
+        text-transform: uppercase;
+        font-family: var(--font-text-header);
+        font-size: 2em;
+        white-space: nowrap;
+      }
+    }
     &--valuemax {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -273,6 +322,16 @@ button {
     display: grid;
     grid-template-columns: repeat(6, minmax(0, 1fr));
     gap: 0.5em;
+
+    @media (max-width: 600px) {
+      grid-template-columns: 1fr;
+
+      @each $col in 1, 2, 3, 4, 5, 6 {
+        > .col-span-#{$col} {
+          grid-column: span 1 / span 1;
+        }
+      }
+    }
   }
 
   &-container {
@@ -282,17 +341,20 @@ button {
 
   &__styles {
     display: grid;
-    gap: 0.25em;
+    gap: 0 0.25em;
   }
 
   &__style {
     display: grid;
-    grid-template-columns: 1fr 3.5em auto;
+    grid-template-columns: 1fr auto;
     gap: 0.25em;
 
-    + .wf__style {
-      margin-top: 0.25em;
-      // border-top: 1px solid var(--color-orange);
+    align-items: center;
+
+    .wf-input {
+      input[type="number"] {
+        font-size: 1.5em;
+      }
     }
   }
 
@@ -324,43 +386,9 @@ button {
     }
   }
 
-  &-action,
-  &-action--wild {
-    &:hover {
-      outline: 2px solid var(--container-color, var(--color-black)) !important;
-    }
-  }
-
-  &-action {
-    --container-color: var(--color-green);
-
-    span {
-      text-align: start;
-      font-weight: 700;
-      color: var(--container-color);
-      text-transform: uppercase;
-      padding-inline: 0.25em 1em;
-      font-family: var(--font-text-header);
-      margin-right: auto;
-      font-size: 1.5em;
-    }
-
-    &--wild span {
-      --container-color: var(--color-navy);
-      text-align: center;
-      font-size: 1em;
-      color: var(--container-color);
-      font-family: var(--font-text-header);
-      // outline: 1px solid var(--container-color);
-      padding: 0 1em;
-      text-transform: lowercase;
-      font-variant: small-caps;
-    }
-  }
-
   &__skills {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     gap: 0.25em;
 
     h3 {
@@ -387,6 +415,7 @@ button {
         color: var(--text-normal);
         text-transform: uppercase;
         font-weight: 700;
+        white-space: nowrap;
       }
 
       input[type="number"] {
@@ -395,6 +424,64 @@ button {
         border-left: 1px solid var(--border-color);
       }
     }
+  }
+
+  &__dice-tray {
+    grid-template-columns: 1fr 3fr;
+    gap: 0 0.25em;
+    padding: 1em;
+    border: none;
+  }
+
+  &__actions {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5em 1em;
+
+    span {
+      font-family: var(--font-text-title);
+    }
+  }
+
+  &-action[type="action"],
+  &-action--wild[type="action"] {
+    --container-color: var(--color-navy);
+
+    display: grid;
+    grid-template-columns: 1em 1fr 1em;
+    gap: 1em;
+    padding: 0 1em;
+
+    outline: 3px solid var(--container-color);
+    // border-radius: 4px;
+
+    // width: calc(100% - 1em);
+
+    img {
+      width: 1em;
+      fill: var(--color-orange);
+      margin-block: auto;
+    }
+
+    span {
+      text-align: center;
+      font-weight: 700;
+      color: var(--container-color);
+      text-transform: uppercase;
+      font-family: var(--font-text-header);
+      font-size: 1.5em;
+      white-space: nowrap;
+    }
+
+    &:hover {
+      background-color: var(--color-parchment);
+      // box-shadow: 4px 4px 0px var(--color-orange);
+    }
+  }
+  &-action--wild[type="action"] {
+    --container-color: var(--color-green);
   }
 
   &-tool {
@@ -458,13 +545,16 @@ button {
   }
 
   &__stamina {
+    .wf-input--valuemax {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
     input[type="number"] {
       font-size: 2em;
     }
   }
 
   &__conditions {
-    gap: 0.25em;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
 
     .wf-input {
       display: flex;
@@ -504,13 +594,5 @@ button {
   &-monster {
     display: grid;
     grid-template-columns: 4fr minmax(5em, 1fr);
-  }
-
-  .repcontainer {
-    .repitem + .repitem {
-      margin-top: 0.25em;
-      padding-top: 0.25em;
-      border-top: 1px dashed var(--border-color);
-    }
   }
 }

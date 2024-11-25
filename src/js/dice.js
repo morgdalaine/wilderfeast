@@ -1,11 +1,9 @@
-for (const style of STYLES) {
-  on(`clicked:${style}`, async (eventInfo) => {
-    rollAction(style);
-  });
-  on(`clicked:${style}_wild`, async (eventInfo) => {
-    rollAction(style, true);
-  });
-}
+on("clicked:focus_up", async (eventInfo) => {
+  rollAction();
+});
+on("clicked:go_wild", async (eventInfo) => {
+  rollAction(true);
+});
 
 /**
  *
@@ -33,47 +31,52 @@ const createRollString = (template, properties) => {
   return `&{template:${template}}${props}`;
 };
 
-const rollAction = async (btn, wild = false) => {
-  getAttrs([...STYLES, ...SKILLS, ...CONDITIONS_REQUEST, "skill", "advantage"], (attributes) => {
-    const skillName = attributes.skill;
-    const style = Number(attributes[btn]) ?? 0;
-    const skill = Number(attributes[skillName]) ?? 0;
+const rollAction = async (wild = false) => {
+  getAttrs(
+    ["style", "skill", "advantage", ...STYLES, ...SKILLS, ...CONDITIONS_REQUEST],
+    (attributes) => {
+      const styleName = attributes.style;
+      const skillName = attributes.skill;
+      const style = Number(attributes[styleName]) ?? 0;
+      const skill = Number(attributes[skillName]) ?? 0;
 
-    console.debug(attributes);
-    const properties = {};
+      console.debug(attributes);
+      const properties = {};
 
-    const dic = {};
-    dic.action = getTranslationByKey("action") || "Action";
-    dic.frightened = getTranslationByKey("frightened") || "Frightened";
+      const dic = {};
+      dic.action = getTranslationByKey("action") || "Action";
+      dic.frightened = getTranslationByKey("frightened") || "Frightened";
 
-    properties.character_name = "@{character_name}";
-    properties.style = `^{${btn}}`;
-    properties.skill = `^{${skillName}} (+${skill})`;
+      properties.character_name = "@{character_name}";
+      properties.style = `^{${styleName}}`;
+      properties.skill = `^{${skillName}} (+${skill})`;
 
-    const action_is = wild ? "wild" : "focus";
-    properties[action_is] = action_is;
-    properties.action_is = action_is;
+      const action_is = wild ? "wild" : "focus";
+      properties[action_is] = action_is;
+      properties.action_is = action_is;
 
-    properties.question = "[[?{Circumstances|Normal,0|Advantage,1|Disadvantage,-1}]]";
+      properties.question = "[[?{Circumstances|Normal,0|Advantage,1|Disadvantage,-1}]]";
 
-    const dice = style - (wild ? 1 : 0);
-    for (const key of Array.from(Array(dice).keys(), (k) => k + 1)) {
-      properties[`roll_style${key}`] = "[[1d6]]";
+      const dice = style - (wild ? 1 : 0);
+      for (const key of Array.from(Array(dice).keys(), (k) => k + 1)) {
+        properties[`roll_style${key}`] = "[[1d6]]";
+      }
+
+      const frightenedLevel =
+        attributes.frightened === "on" ? Number(attributes.frightened_level) : 0;
+      const frightenedMod =
+        frightenedLevel > 0 ? `+ ${-1 * frightenedLevel}[${dic.frightened}]` : "";
+      properties.roll_action = `[[1d${wild ? 20 : 8}[${dic.action}] ${frightenedMod}]]`;
+
+      makeRoll("action", properties, ({ rollId, results }) => {
+        finishRoll(rollId, results);
+
+        // const answer = Number(results.question.result);
+        // const circumstance = answer > 0 ? "advantage" : answer < 0 ? "disadvantage" : "";
+        // finishRoll(rollId, {
+        //   [circumstance]: true,
+        // });
+      });
     }
-
-    const frightenedLevel =
-      attributes.frightened === "on" ? Number(attributes.frightened_level) : 0;
-    const frightenedMod = frightenedLevel > 0 ? `+ ${-1 * frightenedLevel}[${dic.frightened}]` : "";
-    properties.roll_action = `[[1d${wild ? 20 : 8}[${dic.action}] ${frightenedMod}]]`;
-
-    makeRoll("action", properties, ({ rollId, results }) => {
-      finishRoll(rollId, results);
-
-      // const answer = Number(results.question.result);
-      // const circumstance = answer > 0 ? "advantage" : answer < 0 ? "disadvantage" : "";
-      // finishRoll(rollId, {
-      //   [circumstance]: true,
-      // });
-    });
-  });
+  );
 };

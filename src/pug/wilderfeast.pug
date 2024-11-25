@@ -21,11 +21,12 @@ mixin notes
 
 .wf
   .wf__wrapper
-    input(name="attr_advantage" value="0" type="hidden")
-    input(name="attr_hp_mod" value="0" type="hidden")
-    input(name="attr_version" value="0.2" type="hidden")
-    input(name="attr_skill" value="assurance" type="hidden")
+    input(name="attr_version" value="1.0" type="hidden")
     input(name="attr_sheet" value="wilder" type="hidden")
+    input(name="attr_style" value="mighty" type="hidden")
+    input(name="attr_skill" value="assurance" type="hidden")
+    input(name="attr_hp_mod" value="0" type="hidden")
+    input(name="attr_advantage" value="0" type="hidden")
 
     h1.wf__title
       span(data-i18n="wilderfeast") Wilderfeast
@@ -70,9 +71,17 @@ mixin notes
           - const styles = ["mighty", "precise", "swift", "tricky"];
           each style in styles
             .wf__style
+              .wf-input--style
+                label(for=style)
+                  input(name="attr_style" id=style type="radio" value=style)
+                  span(data-i18n=style)= style
+              .wf-input
+                label.sr-only(data-i18n=`${style}_value`)= `${style} value`
+                input(name=`attr_${style}` type="number" value="1" min="1" max="5" placeholder="1")
+
+            //- .wf__style
               button.wf-action(name=`act_${style}` type="action")
                 span(data-i18n=style)= style
-              input(name=`attr_${style}` type="number" value="1" min="1" max="5" placeholder="1")
               button.wf-action--wild(name=`act_${style}_wild` type="action")
                 span(data-i18n="go_wild") Go Wild
 
@@ -91,18 +100,51 @@ mixin notes
                 span(data-i18n=skill)= skill
                 input(name=`attr_${skill}` type="number" min="0" max="5" placeholder="0")
 
+        //- Dice Tray
+        .wf-container.wf-black.col-span-6.wf__dice-tray
+          .wf__actions.grid
+            .empty
+            div
+              span(data-i18n="select_style_skill") Select a STYLE and SKILL.
+
+            button.wf-action(name="act_focus_up" type="action")
+              img(
+                src="https://raw.githubusercontent.com/morgdalaine/wilderfeast/refs/heads/main/assets/d8.svg"
+              )
+              span(data-i18n="focus_up") FOCUS UP
+              img(
+                src="https://raw.githubusercontent.com/morgdalaine/wilderfeast/refs/heads/main/assets/d8.svg"
+              )
+
+            div
+              span(data-i18n="choose_action_die_focus") Add a d8 Action Die to your dice pool.
+
+            button.wf-action--wild(name="act_go_wild" type="action")
+              img(
+                src="https://raw.githubusercontent.com/morgdalaine/wilderfeast/refs/heads/main/assets/d20.svg"
+              )
+              span(data-i18n="go_wild") GO WILD
+              img(
+                src="https://raw.githubusercontent.com/morgdalaine/wilderfeast/refs/heads/main/assets/d20.svg"
+              )
+
+            div
+              span(data-i18n="choose_action_die_wild") Choose one of your TRAITS and describe how it helps you in this situation. Then, remove 1 Style Die and replace it with a d20 Action Die.
+
         //- Stamina
-        .wf-container.wf-black.col-span-2.grid.grid-cols-2.wf__stamina
+        .wf-container.wf-black.col-span-2.wf__stamina
           h3.wf-heading(data-i18n="stamina") Stamina
-          .wf-input.flex.flex-col.text-center
-            label(data-i18n="current") Current
-            input(name="attr_hp" min="0" placeholder="0" type="number")
-          .wf-input.flex.flex-col.text-center
-            label(data-i18n="max") Max
-            input(name="attr_hp_max" min="0" placeholder="0" type="number")
+
+          .wf-input--valuemax
+            .wf-input
+              label(data-i18n="current") Current
+              input(name="attr_hp" placeholder="0" min="0" type="number")
+            .wf-input
+              label(data-i18n="max") Max
+              input(name="attr_hp_max" placeholder="0" min="0" type="number")
 
         //- Conditions
-        .wf-container.wf-red.col-span-4.wf__conditions.grid.grid-cols-3
+        .wf-container.wf-red.col-span-4.wf__conditions.grid
           h3.wf-heading(data-i18n="conditions") Conditions
           -
             const conditions = [
@@ -274,28 +316,28 @@ mixin notes
           .wf-input
             label(data-i18n="upbringing") Upbringing
             textarea(
-              name="upbringing"
+              name="attr_upbringing"
               data-i18n-placeholder="upbringing_placeholder"
               placeholder="What is the meal that defines your childhood?"
             )
           .wf-input
             label(data-i18n="initiation") Initiation
             textarea(
-              name="initiation"
+              name="attr_initiation"
               data-i18n-placeholder="initiation_placeholder"
               placeholder="What is the meal that made you a wilder?"
             )
           .wf-input
             label(data-i18n="ambition") Ambition
             textarea(
-              name="ambition"
+              name="attr_ambition"
               data-i18n-placeholder="ambition_placeholder"
               placeholder="What is the meal you want to eat most?"
             )
           .wf-input
             label(data-i18n="connection") Connection
             textarea(
-              name="connection"
+              name="attr_connection"
               data-i18n-placeholder="connection_placeholder"
               placeholder="The two of you share a bond over this dish."
             )
