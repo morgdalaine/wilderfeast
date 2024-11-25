@@ -46,12 +46,12 @@ html {
 
   p,
   input,
-  input[type='number'],
+  input[type="number"],
   textarea,
   select,
   button,
-  button[type='roll'],
-  button[type='action'],
+  button[type="roll"],
+  button[type="action"],
   label {
     display: unset;
     width: unset;
@@ -73,12 +73,12 @@ html {
     box-shadow: unset;
   }
 
-  button[type='roll'],
-  button[type='action'] {
-    &::before {
-      display: none;
-    }
-  }
+  // button[type="roll"],
+  // button[type="action"] {
+  //   &::before {
+  //     display: none;
+  //   }
+  // }
 
   input[disabled],
   select[disabled],
@@ -107,7 +107,7 @@ html {
   }
 }
 
-input[type='number'] {
+input[type="number"] {
   appearance: textfield;
 
   &::-webkit-outer-spin-button,
@@ -125,7 +125,7 @@ input[type='number'] {
   .charsheet {
     padding: 0;
 
-    input[type='number'] {
+    input[type="number"] {
       width: unset;
       max-width: 5rem;
     }
